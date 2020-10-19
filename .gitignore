@@ -1,0 +1,23 @@
+target/
+**/build/**
+**/out/**
+
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/doc/**
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+### VS Code ###
+.vscode/
+
+### log ###
+log
+
+### Other ###
+.gradle
+gradle
+
