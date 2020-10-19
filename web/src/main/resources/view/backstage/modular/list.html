@@ -1,0 +1,68 @@
+#setLocal(dataUrl = "/api/v1/modular/find?1=1")
+#if(condition.type)
+    #setLocal(dataUrl = dataUrl + "&type=" + condition.type)
+#end
+#if(condition.typeName)
+    #setLocal(dataUrl = dataUrl + "&typeName=" + condition.typeName)
+#end
+
+#@bootstrap_html("板块管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("modularTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加板块"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除所选"></i>
+            </button>
+        #end
+    </div>
+#end
+
+#define js()
+<script>
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm edit" title="edit" onclick="edit(\'' + row.id + '\')">编辑</button>',
+            '<button class="btn btn-danger btn-sm delete" title="delete"  onclick="deleteById(\'' + row.id + '\')">删除</button>',
+        ].join("");
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> ModularController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#modularTable",
+            (rows)=> ModularController.me.batchDelete(rows));
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加板块",
+            area: ['700px', '675px'],
+            maxmin: true,
+            resize: true,
+            content: ['/modular/add', 'no']
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑板块",
+            area: ['700px', '675px'],
+            maxmin: true,
+            content: ['/modular/update?id=' + id, 'no']
+        });
+        return false;
+    }
+
+</script>
+#end

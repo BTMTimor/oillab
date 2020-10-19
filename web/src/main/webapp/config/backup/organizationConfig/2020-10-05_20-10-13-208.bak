@@ -1,0 +1,17 @@
+{
+  "weChat": "15509079695",
+  "address": "91b8f5d8a82a4e3790130e2a6dcf0913",
+  "weChatImg": "/static/img/companyWeChat.png",
+  "icon": "/logo.ico",
+  "description": "这是公司的简要描述",
+  "introduceTestVideoUrl": "http://player.youku.com/embed/XNDM1NjIxNzU0MA==",
+  "phone": "0797-3116-3233",
+  "introduceVideoUrl": "",
+  "name": "奥莱博(武汉)科技有限公司",
+  "videoCover": "/static/oillab/images/v-pic.jpg",
+  "logo": "/static/oillab/img/logo-tm.png",
+  "indexShowImg": "/static/oillab/images/coninfo.jpg",
+  "email": "9854211@163.com",
+  "officialAccount": "/static/img/companyOfficialAccount.png",
+  "mapAddress": "这是公司的地址"
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>#(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="shortcut icon" href="#(icon_url)">-->
+    <!--   css   -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/oillab/default/css/common.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/product.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/product-show.css">
+</head>
+<body>
+<div id="base-container">
+    <!--顶部导航栏：包含公司信息和导航信息-->
+    <header id="header" class="row"></header>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - 页面主体内容 - - - - - - - - - - - - - - - - - - - - -->
+    <div id="main-container" class="main-container"></div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--页面底部：导航、公司信息和版权信息-->
+    <footer id="footer"></footer>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--   js   -->
+<script src="/static/plugins/art-template/template-web.js"></script>
+<script src="/static/plugins/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script src="/static/common/js/common.classes.js"></script>
+<script src="/static/common/js/entity.class.js"></script>
+
+<script id="product-show-temp" type="text/html">
+    <div class="product-main row">
+        <!--左侧导航栏-->
+        <div id="product-nav" class="product-nav col-3">
+            {{each info.category item}}
+            <div class="product-class">
+                <h6><strong>{{item.name}}</strong></h6>
+
+                <ul id="product-type-list-{{item.id}}" class="product-list"></ul>
+            </div>
+            {{/each}}
+        </div>
+
+        <!--右侧产品展示区域-->
+        <div id="product-show" class="product-show col-9"></div>
+    </div>
+</script>
+
+<script id="product-nav-list" type="text/html">
+    {{if info.types.length > 0}}
+    {{set category = info.types[0].category}}
+    {{each info.types item}}
+    <li>
+        <a href="/product/{{category}}-{{item.id}}" title="{{item.description}}">
+            <span class="disc"></span>{{item.name}}
+        </a>
+    </li>
+    {{/each}}
+    {{/if}}
+</script>
+
+<script id="product-list" type="text/html">
+    <div id="product-list-container">
+        {{if products.length > 0}}
+        {{set type = products[0].type}}
+        {{set typeName = products[0].typeName}}
+        {{set category = products[0].category}}
+        {{set categoryName = products[0].categoryName}}
+        <h5>
+            位置：
+            <a href="/product/{{category}}">{{categoryName}}</a>
+            >
+            <a href="/product/{{category}}-{{type}}">{{typeName}}</a>
+        </h5>
+        <hr>
+        <ul class="productResource row">
+            {{each products item}}
+            <li class="product-model col-12">
+                <a href="/product/{{category}}-{{type}}-{{item.id}}" title="{{item.name}}">
+                    {{if item.coverImg}}
+                    <div class="resourceImg">
+                        <img src="{{item.coverImg}}" alt="{{item.name}}" class="img-fluid">
+                    </div>
+                    {{/if}}
+                    <div class="product-info">
+                        <h5>测试{{item.name}}</h5>
+                        <p>{{item.description}}</p>
+                    </div>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+</script>
+
+<script id="product-info-temp" type="text/html">
+    <div class="row">
+        <div id="product-container" class="col-12" style="padding: 10px 50px">
+            <h5>
+                位置：
+                <a href="/product/{{product.category}}">{{product.categoryName}}</a>
+                >
+                <a href="/product/{{product.category}}-{{product.type}}">{{product.typeName}}</a>
+                >
+                <a href="/product/{{product.category}}-{{product.type}}-{{product.id}}">{{product.name}}</a>
+            </h5>
+            <hr>
+
+            <h5>产品介绍</h5><hr>
+            <div id="productIntroduction">
+                {{@ product.introduction}}
+            </div>
+
+            {{if product.resource}}
+            <h5>资料下载</h5><hr>
+            <ul id="productResource" class="row">
+                {{each product.resource item}}
+                <li class="product-resource col-12">
+                    <a href="{{item.url}}" title="{{item.name}}" target="_blank">
+                        <div class="resourceImg">
+                            <img src="/upload/pdf.png" alt="{{item.name}}" class="img-fluid">
+                        </div>
+                        <div class="product-info">
+                            <h5>测试{{item.name}}</h5>
+                            <p>更新时间：{{item.lastModified}} | 大小：{{item.size}}</p>
+                        </div>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script>
+    // 渲染网页顶部导航栏和网页底部信息
+    renderHeaderAndFooter("products", "header", "footer");
+
+    function initPage(){
+        let viewProductId = '#(productId)',
+            viewProductTypeId = '#(productTypeId)';
+        new Promise((resolve)=>{
+            const temp = "product-show-temp";
+            let result = ProductCategoryController.me.category();
+            let productCategory = result.main;
+            let config = {info: {category: productCategory}};
+            TemplateManager.renderByScriptId(temp, "main-container", config);
+            resolve(productCategory);
+        }).then((categoryList)=>{
+            for (let i in categoryList) {
+                let category = categoryList[i];
+                let result = ProductTypeController.me.findByCategoryId(category["id"]);
+                let types = result.main;
+                if(!viewProductTypeId) viewProductTypeId = types[0].id;
+
+                let config = {info: {types: types}};
+                let eid = "product-type-list-" + category["id"];
+                TemplateManager.renderByScriptId("product-nav-list", eid, config);
+            }
+        }).then(() => {
+            if (viewProductId){
+                new Promise(resolve => {
+                    resolve(ProductController.me.getById(viewProductId));
+                }).then(result => {
+                    let product = result.data.main;
+                    product.resource = (product.resource && product.resource.length > 2) ? JSON.parse(product.resource) : false;
+                    let config = {product: product};
+                    TemplateManager.renderByScriptId("product-info-temp", "product-show", config);
+                });
+            }else if(viewProductTypeId){
+                new Promise(resolve => {
+                    resolve(ProductController.me.findByType(viewProductTypeId));
+                }).then(result => {
+                    let product = result.data.main;
+                    product.resource = (product.resource && product.resource.length > 2)
+                        ? JSON.parse(product.resource) : false;
+                    let config = {products: product};
+                    TemplateManager.renderByScriptId("product-list", "product-show", config);
+                });
+            }
+        });
+    }
+
+    initPage();
+</script>
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

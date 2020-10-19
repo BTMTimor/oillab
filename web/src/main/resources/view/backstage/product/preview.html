@@ -1,0 +1,96 @@
+#@bootstrap_html("产品信息预览", "")
+
+#define body()
+<div class="row">
+    <div id="product-container" class="col-12" style="padding: 10px 50px">
+        <h3>产品介绍</h3><hr>
+        <div>
+            <h4>产品名称：{{product.name}}</h4>
+            <h4>产品种类：{{product.category}}</h4>
+            <h4>产品类型：{{product.type}}</h4>
+            <h4>产品型号：{{product.model}}</h4>
+            <!--<h4>产品图片：</h4>
+            <div>
+                <img src="{{product.coverImg}}" alt="{{product.name}}" class="img-fluid">
+            </div>-->
+        </div>
+        <h4>详细介绍：</h4>
+        <div id="productIntroduction">
+            {{@ product.introduction}}
+        </div>
+
+        {{if product.resource}}
+        <h3>资料下载</h3><hr>
+        <ul id="productResource" class="row">
+            {{each product.resource item}}
+            <li class="product-resource col-12">
+                <a href="{{item.url}}" title="{{item.name}}" target="_blank">
+                    <div class="resourceImg">
+                        <img src="/upload/pdf.png" alt="{{item.name}}" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h3>测试{{item.name}}</h3>
+                        <p>更新时间：{{item.lastModified}} | 大小：{{item.size}}</p>
+                    </div>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+</div>
+<style>
+    #productResource{
+        padding: 0 0;
+    }
+
+    #productIntroduction{
+        padding: 15px 30px;
+        border: lightgrey 1px solid;
+    }
+
+    .product-resource{
+        list-style: none;
+        height: 84px;
+        /*border: cornflowerblue 1px solid;*/
+    }
+
+    .product-resource > a{
+        width: 100%;
+        padding-top: 6px;
+        display: block;
+    }
+
+    .product-resource > a img{
+        max-width: 64px;
+        padding-bottom: 16px;
+    }
+
+    .product-resource .resourceImg{
+        display: inline-block;
+        height: 100%;
+        float: left;
+    }
+
+    .product-resource .product-info{
+        display: inline-block;
+        height: 100%;
+        float: left;
+        padding-left: 8px;
+    }
+
+    .product-resource .product-info h3{
+        margin-top: 10px !important;
+    }
+
+</style>
+<script>
+    new Promise(resolve => {resolve(ProductController.me.getById("#(entity.id)"));})
+        .then(result => {
+            let product = result.data.main;
+            product.resource = (product.resource && product.resource.length > 2)
+                ? JSON.parse(product.resource) : false;
+            TemplateManager.renderByEId("product-container", {product: product});
+        });
+</script>
+#end

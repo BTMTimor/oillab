@@ -1,0 +1,127 @@
+/*全局*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    /*margin: 0 auto;*/
+}
+
+/*顶部导航*/
+/*-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+#header{
+    height: 60px;
+    line-height: 60px;
+    /*background: rgba(255,255,255, 0.9);*/
+    background: whitesmoke;
+    margin: 0 auto;
+}
+
+.nav-menu{
+    line-height: 60px;
+}
+
+.logo{
+}
+
+.logo > img{
+    max-height: 48px;
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+#header > .nav > .nav-active{
+    border-bottom: 4px solid #1175B3;
+}
+
+#header > .nav > .nav-item{
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 15px;
+    color: #333;
+    padding: 0 0;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+/*主体*/
+/*-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+#base-container{
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+}
+
+.main-container{
+    padding-top: 20px;
+    padding-bottom: 108px;
+    margin: 0 10%;
+    /*width: 1080px;*/
+    /*margin: 20px 2%;*/
+}
+/*底部页脚*/
+/*-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+#footer{
+    background-color: #3c3c3c;
+    position: absolute;
+    height: 106px;
+    width: 100%;
+    bottom: 0;
+}
+
+.copyright{
+    padding: 20px 0;
+    background-color: #3c3c3c;
+    height: 106px;
+}
+
+.copyright > p{
+    margin: 0 auto;
+    width: 100%;
+    line-height: 22px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+/*我的导航按钮组*/
+/*-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+.my-btn-group{
+    padding: 20px 0;
+    width: 100%;
+}
+
+.my-btn-group > a:hover{
+    background-color: #1175B3;
+    color: white;
+}
+
+.my-btn-group .my-btn{
+    background-color: #e3e3e3;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    display: inline-block;
+    padding: 0 20px;
+    margin: 5px 10px;
+}
+
+.my-btn-group .selected{
+    background-color: #1175B3;
+    color: white;
+}
+
+a:link, a:visited{
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+

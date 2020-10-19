@@ -1,0 +1,17 @@
+{
+  "name": "奥莱博(武汉)科技有限公司",
+  "address": "武汉市XXX区YYY路ZZZ号",
+  "mapAddress": "这是公司的地址",
+  "description": "这是公司的简要描述",
+  "email": "9854211@163.com",
+  "officialAccount": "/static/img/companyOfficialAccount.png",
+  "weChat": "15509079695",
+  "weChatImg": "/static/img/companyWeChat.png",
+  "phone": "0797-3116-3233",
+  "icon": "/logo.ico",
+  "logo": "/static/oillab/img/logo-tm.png",
+  "indexShowImg": "/static/oillab/images/coninfo.jpg",
+  "introduceVideoUrl": "",
+  "introduceTestVideoUrl": "http://player.youku.com/embed/XNDM1NjIxNzU0MA==",
+  "videoCover": "/static/oillab/images/v-pic.jpg"
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "name": "id",
+    "type": "hidden",
+    "label": "id",
+    "required": "ID_RULE",
+    "rangeLength": "0, 32"
+  },
+  {
+    "name": "mid",
+    "type": "number",
+    "label": "板块id",
+    "required": "ADD_AND_UPDATE",
+    "rangeValue": "-1024, 1023"
+  },
+  {
+    "name": "uid",
+    "label": "用户id",
+    "type": "hidden",
+    "required": "NOT_REQUIRED",
+    "rangeLength": "0, 32"
+  },
+  {
+    "name": "title",
+    "label": "标题",
+    "type": "text",
+    "required": "ADD_AND_UPDATE",
+    "rangeLength": "0, 128"
+  },
+  {
+    "name": "type",
+    "type": "select",
+    "label": "文章类型",
+    "required": "ADD_AND_UPDATE",
+    "rangeLength": "0, 32"
+  },
+  {
+    "name": "author",
+    "type": "text",
+    "label": "作者",
+    "required": "ADD_AND_UPDATE",
+    "rangeLength": "0, 128"
+  },
+  {
+    "name": "description",
+    "type": "textarea",
+    "label": "描述",
+    "required": "NOT_REQUIRED",
+    "rangeLength": "0, 512"
+  },
+  {
+    "name": "coverImg",
+    "type": "image",
+    "label": "引导图片",
+    "required": "NOT_REQUIRED",
+    "rangeLength": "0, 255"
+  },
+  {
+    "name": "content",
+    "type": "text",
+    "label": "内容",
+    "required": "NOT_REQUIRED",
+    "rangeLength": "0, 65535"
+  },
+  {
+    "name": "addTime",
+    "type": "datetime",
+    "label": "添加时间",
+    "required": "NOT_REQUIRED"
+  },
+  {
+    "name": "pubTime",
+    "type": "datetime",
+    "label": "发布日期",
+    "required": "ADD_AND_UPDATE"
+  },
+  {
+    "name": "lastEditTime",
+    "type": "datetime",
+    "label": "最后编辑时间",
+    "required": "NOT_REQUIRED"
+  },
+  {
+    "name": "views",
+    "label": "浏览人数",
+    "type": "number",
+    "required": "NOT_REQUIRED",
+    "rangeValue": "0, 10240000"
+  },
+  {
+    "name": "status",
+    "type": "select",
+    "label": "状态",
+    "required": "ADD_AND_UPDATE",
+    "rangeValue": "-1024, 1023"
+  }
+]

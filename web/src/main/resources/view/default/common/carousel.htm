@@ -1,0 +1,23 @@
+<!--通用轮播图-->
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<div id="carousel-{{randomId}}" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {{each info.carousel item index}}
+        <div class="carousel-item {{(index == 0) ? 'active' : ''}}" data-interval="{{item.time}}">
+            <img src="{{item.url}}" class="d-block w-100" alt="{{item.title}}">
+        </div>
+        {{/each}}
+    </div>
+    <a class="carousel-control-prev" href="#carousel-{{randomId}}" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">{{info.common.carousel.index.pre}}</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-{{randomId}}" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">{{info.common.carousel.index.next}}</span>
+    </a>
+</div>
+</body>
+</html>

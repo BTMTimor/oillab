@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "index",
+    "title": "首页",
+    "url": "/",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "product",
+    "title": "产品中心",
+    "url": "/product",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "solution",
+    "title": "应用案例",
+    "url": "/solution",
+    "show": false
+  },
+  {
+    "id": 4,
+    "name": "solution",
+    "title": "解决方案",
+    "url": "/solution",
+    "show": false
+  },
+  {
+    "id": 5,
+    "name": "news",
+    "title": "新闻资讯",
+    "url": "/news",
+    "show": true
+  },
+  {
+    "id": 6,
+    "name": "about",
+    "title": "关于我们",
+    "url": "/about",
+    "show": true
+  }
+]

@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group 'xyz.xpman'
+version '1.0'
+
+dependencies {
+
+    compile(
+            "com.jfinal:jfinal-undertow:${jfinalUndertowVersion}",
+    )
+
+    compile project(':business')
+}

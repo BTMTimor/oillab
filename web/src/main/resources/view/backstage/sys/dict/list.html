@@ -1,0 +1,76 @@
+#setLocal(dataUrl = "/api/v1/sys/dict/find")
+#if(condition.type)
+    #setLocal(dataUrl = dataUrl + "?type=" + condition.type)
+#end
+
+#@bootstrap_html("字典管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("sysDictTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加字典"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default">
+                <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除所选"></i>
+            </button>
+            <select id="export-select" style="height: 34px;">
+                <option value="">默认导出数据</option>
+                <option value="all">导出所有数据</option>
+                <option value="selected">导出选中数据</option>
+            </select>
+        #end
+    </div>
+#end
+
+#define js()
+<script src="/static/admin/js/plugins/layer/layer.js"></script>
+<script>
+
+
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm edit" title="edit" onclick="edit(\'' + row.id + '\')">编辑</button>',
+            '<button class="btn btn-danger btn-sm delete" title="delete"  onclick="deleteById(\'' + row.id + '\')">删除</button>',
+        ].join("");
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> SysDictController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#sysDictTypeTable",
+            (rows)=> SysDictController.me.batchDelete(rows));
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加字典",
+            area: ['700px', '550px'],
+            maxmin: true,
+            resize: true,
+            content: ['/sys/dict/add', 'no']
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑字典",
+            area: ['700px', '550px'],
+            maxmin: true,
+            content: ['/sys/dict/update?id=' + id, 'no']
+        });
+        return false;
+    }
+
+</script>
+#end

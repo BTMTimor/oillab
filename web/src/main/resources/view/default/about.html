@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>#(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="shortcut icon" href="#(icon_url)">-->
+    <!--   css   -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/oillab/default/css/about.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/common.css">
+</head>
+<body>
+
+<div id="base-container">
+    <!--顶部导航栏：包含公司信息和导航信息-->
+    <header id="header" class="row"></header>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!--轮播图-->
+    <div id="carousel"></div>
+
+    <!-- - - - - - - - - - - - - - - 页面主体内容 - - - - - - - - - - - - - - - - - - - - -->
+    <div class="main-container">
+        <div id="aboutGroup" class="my-btn-group text-center"></div>
+
+        <div id="aboutContainer"></div>
+    </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--页面底部：导航、公司信息和版权信息-->
+    <footer id="footer"></footer>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!--   js   -->
+<script src="/static/plugins/art-template/template-web.js"></script>
+<script src="/static/plugins/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script src="/static/common/js/common.classes.js"></script>
+<script src="/static/common/js/entity.class.js"></script>
+
+<script id="content-temp" type="text/html">
+    <div class="col-12">
+        <div class="article-content">
+            {{@ info.content}}
+        </div>
+    </div>
+</script>
+
+<script>
+    // 加载关于板块的具体内容
+    function loadContent(data) {
+        data.forEach((temp)=>{
+            // 可能呢后期需要做处理
+            let url = temp["url"];
+            // 是否需要加载配置文件进行渲染
+            let pageTemp = WebDao.get(url);
+            // 若页面不需要参数，则可直接使用这个
+            // $(".about-" + temp["name"]).load(url);
+
+            let renderResult = pageTemp;
+            let eid = "about-" + temp["name"];
+            let configName = temp["config"] ? temp["config"].trim() : "";
+            if (configName && configName.trim().length > 5){
+                let config;
+                if(configName.indexOf("/article/") === -1){
+                    config = ConfigDao.me.getByName(configName);
+                    renderResult = TemplateManager.render(url, pageTemp, {info: config});
+                    $("#" + eid).html(renderResult);
+                }else{
+                    let result = WebDao.getJSON(configName);
+                    config = result.main["list"] ? result.main["list"] : result.main;
+                    TemplateManager.renderByScriptId("content-temp", eid, {info: config});
+                }
+            }
+        });
+    }
+
+    // 初始化：加载页面所有内容
+    function initPage() {
+        new Promise(resolve => {
+            resolve(ModularController.me.aboutModular().main);
+        }).then(data => {
+            // 加载导航
+            new Promise(() => {
+                TemplateManager.renderToElement("aboutGroup", {name: "myBtnGroup", status:1}, data);
+                // 绑定导航菜单的点击事件：in common.js
+                bindMyBtnNav("#aboutGroup");
+            });
+
+            // 加载具体信息
+            new Promise(() => {
+                TemplateManager.renderToElement("aboutContainer", {name: "aboutContainer", status:1}, data);
+                // 加载对应的内容
+                loadContent(data);
+            });
+        });
+    }
+    // Promise.race() 类似于Promise.all() ，区别在于它有任意一个完成就算完成
+
+    // 渲染网页顶部导航栏和网页底部信息
+    renderHeaderAndFooter("about", "header", "footer");
+
+    initPage();
+
+</script>
+
+<!--   js   -->
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

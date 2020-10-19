@@ -1,0 +1,17 @@
+{
+  "default": {
+    "template": "/template/default/common/carousel.htm",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "index": {
+    "template": "/template/default/common/carousel.htm",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "product": {
+    "template": "/template/default/common/carousel.htm",
+    "prev": "Previous",
+    "next": "Next"
+  }
+}

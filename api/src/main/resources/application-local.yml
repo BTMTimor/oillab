@@ -1,0 +1,27 @@
+# jfinal config
+common:
+  devMode: true
+  packing: fasle
+  template:
+    inClassPath: true
+  # other config
+  baseUploadPath: D:\projectData\oillab\upload
+  baseDownloadPath: D:\projectData\oillab\upload
+  baseTemplatePath:
+
+  # 扫描jar包设置
+  scanJars: baseModel-1.0.jar|common-1.0.jar|business-1.0.jar|api-1.0.jar
+  scanPackages:
+
+# db config
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/oillab?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+  username: oillab
+  password: hello-oillab_toor!
+
+  # dbcp config
+druid:
+  monitor: /admin/druid/monitor/1122
+
+#undertow.hotSwapClassPrefix: com.oilLib

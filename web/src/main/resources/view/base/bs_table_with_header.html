@@ -1,0 +1,24 @@
+#-- bootstrap_table：bootstrap表格模板
+    @param dataUrl：表格数据来源的url
+--#
+#define bootstrap_table2(bsTableId, dataUrl)
+
+#setLocal(bsTableToolBarId = bsTableId+ "ToolBar")
+<div class="table-wrap">
+    <div class="my-table">
+        <div class="btn-group hidden-xs" id="#(bsTableToolBarId)" role="group">
+            #@tableToolbar?()
+        </div>
+        <table id="#(bsTableId)" data-toggle="table" data-sort-order="desc">
+            #@tableHeader?()
+        </table>
+    </div>
+</div>
+
+#@beforeInit?()
+<script>
+    // 初始化表格
+    initBootstrapTable("##(bsTableId)", "##(bsTableToolBarId)", "#(dataUrl)");
+</script>
+#end
+

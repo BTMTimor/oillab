@@ -1,0 +1,70 @@
+#setLocal(dataUrl = "/api/v1/product/type/find")
+
+#@bootstrap_html("产品类型管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("productTypeTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除"></i>
+            </button><!--
+            <button type="button" class="btn btn-outline btn-default" onclick="">
+                <i class="glyphicon glyphicon-edit" aria-hidden="true" title="编辑"></i>
+            </button>-->
+            <button type="button" class="btn btn-outline btn-default" onclick="search();">
+                <i class="glyphicon glyphicon-search" aria-hidden="true" title="查找"></i>
+            </button>
+        #end
+    </div>
+#end
+
+#define js()
+<script>
+
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm edit" title="edit" onclick="edit(\'' + row.id + '\')">编辑</button>',
+            '<button class="btn btn-danger btn-sm delete" title="delete"  onclick="deleteById(\'' + row.id + '\')">删除</button>',
+        ].join("");
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加产品类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            resize: true,
+            content: ['/product/type/add', 'no']
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑产品类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            content: ['/product/type/update?id=' + id, 'no']
+        });
+        return false;
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> ProductTypeController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#productTypeTable",
+            (rows)=> ProductTypeController.me.batchDelete(rows));
+    }
+
+    function search(){}
+</script>
+#end

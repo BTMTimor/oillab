@@ -1,0 +1,85 @@
+#setLocal(dataUrl = "/api/v1/article/find?1=1")
+#if(condition.typeName)
+#setLocal(dataUrl = dataUrl + "&typeName=" + condition.typeName)
+#end
+#if(condition.mid)
+#setLocal(dataUrl = dataUrl + "&mid=" + condition.mid)
+#end
+#if(condition.status)
+#setLocal(dataUrl = dataUrl + "&status=" + condition.status)
+#end
+#@bootstrap_html("文章管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("articleTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加栏目"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除所选"></i>
+            </button>
+        #end
+    </div>
+#end
+
+
+#define js()
+<script>
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm edit" title="edit" onclick="edit(\'' + row.id + '\')">编辑</button>',
+            '<button class="btn btn-success btn-sm preview" title="view"  onclick="preview(\'' + row.id + '\')">预览</button>',
+            '<button class="btn btn-danger btn-sm delete" title="delete"  onclick="deleteById(\'' + row.id + '\')">删除</button>',
+        ].join("");
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> ArticleController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#articleTable",
+            (rows)=> ArticleController.me.batchDelete(rows));
+    }
+
+    function preview(id){
+        layer.open({
+            type: 2,
+            title: "预览文章",
+            area: ['800px', '600px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/article/preview/' + id
+        });
+    }
+
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加文章",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/article/add'
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑文章",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/article/update?id=' + id
+        });
+    }
+
+</script>
+#end
+

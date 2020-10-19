@@ -1,0 +1,32 @@
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<div class="row">
+    <div id="product-container" class="col-12" style="padding: 10px 50px">
+        <h5>产品介绍</h5><hr>
+        <div id="productIntroduction">
+            {{@ product.introduction}}
+        </div>
+
+        {{if product.resource}}
+        <h5>资料下载</h5><hr>
+        <ul id="productResource" class="row">
+            {{each product.resource item}}
+            <li class="product-resource col-12">
+                <a href="{{item.url}}" title="{{item.name}}" target="_blank">
+                    <div class="resourceImg">
+                        <img src="/upload/pdf.png" alt="{{item.name}}" class="img-fluid">
+                    </div>
+                    <div class="product-info">
+                        <h5>测试{{item.name}}</h5>
+                        <p>更新时间：{{item.lastModified}} | 大小：{{item.size}}</p>
+                    </div>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+</div>
+</body>
+</html>

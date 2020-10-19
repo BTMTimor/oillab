@@ -1,0 +1,34 @@
+#@bootstrap_html("设置", "")
+
+#define body()
+<div class="setting-show">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="introduction-tab" data-toggle="tab" href="#introduction" role="tab" aria-controls="home" aria-selected="true">基本设置</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="performance-tab" data-toggle="tab" href="#performance" role="tab" aria-controls="profile" aria-selected="false">安全设置</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="standard-tab" data-toggle="tab" href="#standard" role="tab" aria-controls="contact" aria-selected="false">其他设置</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="download-tab" data-toggle="tab" href="#download" role="tab" aria-controls="contact" aria-selected="false">资料下载</a>
+        </li>
+    </ul>基本设置安全设置邮件设置其他设置
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="introduction" role="tabpanel" aria-labelledby="introduction-tab">
+            产品概述...
+        </div>
+        <div class="tab-pane fade" id="performance" role="tabpanel" aria-labelledby="performance-tab">
+            性能指标...
+        </div>
+        <div class="tab-pane fade" id="standard" role="tabpanel" aria-labelledby="standard-tab">
+            产品标准...
+        </div>
+        <div class="tab-pane fade" id="download" role="tabpanel" aria-labelledby="download-tab">
+            资料下载...
+        </div>
+    </div>
+</div>
+#end

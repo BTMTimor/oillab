@@ -1,0 +1,4 @@
+.control-label.is-required:before {
+    content: '* ';
+    color: red;
+}

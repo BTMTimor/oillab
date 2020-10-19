@@ -1,0 +1,62 @@
+<!doctype>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title><!--表格编辑-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="/static/admin/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="/static/plugins/bootstrap-table/1.7/bootstrap-table.min.css" rel="stylesheet" />
+</head>
+<body>
+<table id="my_table_id" data-id-field="id" data-toggle="table"
+       data-editable-emptytext="Default empty text."
+       data-editable-url="/api/v1/sys/dict/type/update"
+       data-url="/api/v1/sys/dict/type/find">
+    <thead>
+    <tr>
+        <th data-checkbox="true"></th>
+        <th data-field="id" data-editable="true" data-editable-emptytext="">id</th>
+        <th data-field="name" data-editable="true" data-editable-emptytext="">字典类型名</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>name1</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>2</td>
+        <td>name2</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>3</td>
+        <td>name3</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="/static/plugins/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="/static/plugins/bootstrap-table/1.7/bootstrap-table.min.js"></script>
+<script src="/static/plugins/bootstrap-table/1.7/extensions/editable/bootstrap-table-editable.min.js"></script>
+<script src="/static/plugins/bootstrap-table/1.7/extensions/editable/bootstrap-table-editable.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script>
+    let dataUrl = "/api/v1/sys/dict/type/find";
+    // initBootstrapTable("#my_table_id", "#my_table_id", dataUrl);
+    $("#my_table_id").editable();
+
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm find" title="edit" onclick="edit(' + row.id + ')">编辑</button>',
+            '<a class="btn btn-success btn-sm update" href="/api/v1/modular/delete?id=' + row.id + '" title="delete">删除</a>',
+        ].join("");
+    }
+</script>
+</body>
+</html>

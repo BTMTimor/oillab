@@ -1,0 +1,21 @@
+### 基础html模板
+#include("base_html.html")
+
+### bootstrap相关模板
+#include("base_bootstrap.html")
+#include("bootstrap_card.html")
+#include("bootstrap_table.html")
+#include("bs_table_with_header.html")
+
+### 编辑器相关
+#include("editor/summerNote.htm")
+#include("editor/ueditor.htm")
+
+### 文件上传相关
+#include("file_upload/my_img_upload.htm")
+#include("file_upload/my_img_upload2.htm")
+#include("file_upload/baidu_file_upload.htm")
+
+
+
+

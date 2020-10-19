@@ -1,0 +1,97 @@
+<!--首页案例展示-->
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<style>
+    .index-application-item {
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+        text-align: center;
+    }
+    .index-application-item .application-item {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        min-height: 410px;
+        background-color: #CCC;
+        overflow: hidden;
+        position: relative;
+        margin: 5px 6px;
+        padding: 0 8px;
+    }
+    .index-application-item .application-item .info {
+        width: 100%;
+        height: 110px;
+        position: absolute;
+        padding: 20px 0 0 0;
+        background: rgba(0,0,0, 0.4);
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        transition-duration: 0.8s;
+    }
+    .index-application-item .application-item .info h2 {
+        display: block;
+        font-weight: normal;
+        width: 90%;
+        height: 30px;
+        margin: 0 auto;
+        line-height: 30px;
+        text-align: left;
+        color: #fff;
+        font-size: 22px;
+    }
+    .index-application-item .application-item .info p {
+        display: block;
+        font-weight: normal;
+        width: 90%;
+        height: 44px;
+        overflow: hidden;
+        margin: 10px auto 0 auto;
+        line-height: 22px;
+        text-align: left;
+        color: #fff;
+        font-size: 14px;
+    }
+    .index-application-item .application-item:hover img {
+        width: 106%;
+        top: -3%;
+        left: -3%;
+    }
+    .index-application-item .application-item:hover .info {
+        background-color: #1175B3;
+    }
+    .index-application-item .application-item img {
+        display: block;
+        width: 100%;
+        min-height: 410px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        transition-duration: 0.2s;
+    }
+
+</style>
+<div class="index-application-item">
+    <section class="row">
+        {{each info item index}}
+        {{if item.show}}
+        <div class="col-xl-4 col-md-6 col-sm-12">
+            <a href="#" class="application-item">
+                <div class="info">
+                    <h2>{{item.company}}</h2>
+                    <p>{{item.description}}</p>
+                </div>
+                <!--<img src="/static/oillab/images/c2.jpg" alt="{{info.companyInfo}}">-->
+                <img src="{{item.coverImg}}" alt="{{item.description}}">
+            </a>
+        </div>
+        {{/if}}
+        {{/each}}
+    </section>
+</div>
+<a href="/template/default/solution.html" class="commonMoreBut">查看更多</a>
+</body>
+</html>

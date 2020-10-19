@@ -1,0 +1,96 @@
+#@bootstrap_html("测试", "/favorite.ico")
+
+#define css()
+<link href="/static/plugins/webuploader/webuploader.css" rel="stylesheet">
+#end
+
+#define body()
+<div id="uploader" class="wu-example">
+	<!--用来存放文件信息-->
+	<div id="fileList" class="uploader-list"></div>
+	<div class="">
+		<div id="picker">选择文件</div>
+		<button id="ctlBtn" class="btn btn-default">开始上传</button>
+	</div>
+</div>
+#end
+
+<script>
+	let BASE_URL = "/static/plugins/webuploader";
+	var uploader = WebUploader.create({
+		// swf文件路径
+		swf: BASE_URL + '/js/Uploader.swf',
+		// 文件接收服务端。
+		server: '/ueditor/upFile2',
+		// 选择文件的按钮。可选。
+		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
+		pick: { id: "#picker", innerHTML: "本地文件上传" }, // 选择文件的按钮。可选
+		// 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+		resize: false,
+
+		//是否允许重复的图片
+		duplicate: true,
+		auto: false, // 选完文件后，是否自动上传
+		// 只允许选择图片文件。
+		accept: {
+			title: 'Images',
+			extensions: 'gif,jpg,jpeg,bmp,png',
+			mimeTypes: 'image/*'
+		},
+		//线程数
+		threads: 2,
+		//单个文件大小限制
+		fileSingleSizeLimit: 2000,
+		//上传文件数量限制
+		fileNumLimit:10,
+		//上传前不压缩
+		compress:false,
+	});
+
+	// 当有文件被添加进队列的时候
+	uploader.on('fileQueued', function(file) {
+		$("#fileList").append('<div id="' + file.id + '" class="item">' +
+				'<h4 class="info">' + file.name + '</h4>' +
+				'<p class="state">等待上传...</p>' +
+				'</div>' );
+	});
+
+	// 文件上传过程中创建进度条实时显示。
+	uploader.on('uploadProgress', function(file, percentage) {
+		let $li = $('#'+file.id ),
+				$percent = $li.find('.progress .progress-bar');
+
+		// 避免重复创建
+		if (!$percent.length) {
+			$percent = $('<div class="progress progress-striped active">' +
+					'<div class="progress-bar" role="progressbar" style="width: 0%">' +
+					'</div>' +
+					'</div>').appendTo( $li ).find('.progress-bar');
+		}
+
+		$li.find('p.state').text('上传中');
+
+		$percent.css('width', percentage * 100 + '%' );
+	});
+
+	uploader.on('uploadSuccess', function(file) {
+		$('#'+file.id ).find('p.state').text('已上传');
+	});
+
+	uploader.on('uploadError', function(file) {
+		$('#'+file.id ).find('p.state').text('上传出错');
+	});
+
+	uploader.on('uploadComplete', function(file) {
+		$('#'+file.id ).find('.progress').fadeOut();
+	});
+</script>
+#define js()
+<script src="/static/plugins/webuploader/webuploader.min.js"></script>
+<script>
+	$("#ctlBtn").on("click", function () {
+		// upFile
+		uploader.upload();
+	});
+</script>
+#end

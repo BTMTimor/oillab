@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group 'xyz.xpman'
+version '1.0'
+
+dependencies {
+
+    //导入slf4j包，不导入这个包会报错：SLF4J: Failed to load class
+    //"org.slf4j.impl.StaticLoggerBinder"
+    compileOnly "org.slf4j:slf4j-nop:${slf4jNopVersion}"
+
+    compileOnly "com.jfinal:jfinal-undertow:${jfinalUndertowVersion}"
+
+    compile (
+            // jfinal相关
+            "com.jfinal:jfinal:${jfinalVersion}",
+            "com.jfinal:cos:${jfinalCosVersion}",
+
+            // 日志相关
+            "log4j:log4j:${log4jVersion}",
+
+            // 数据库相关
+            "mysql:mysql-connector-java:${mysqlConnectorVersion}",
+            "com.alibaba:druid:${druidVersion}",
+
+            "javax.servlet:javax.servlet-api:${javaxServletApiVersion}",
+
+            "org.jetbrains:annotations:${annotationsVersion}",
+            "org.yaml:snakeyaml:${snakeyamlVersion}",
+            "commons-io:commons-io:${commonsIoVersion}",
+            "com.alibaba:fastjson:${fastjsonVersion}",
+            "it.sauronsoftware.cron4j:cron4j:${cron4jVersion}",
+            "net.sf.ehcache:ehcache:${ehcacheVersion}",
+    )
+
+}

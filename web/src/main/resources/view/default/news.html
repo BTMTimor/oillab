@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>#(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="shortcut icon" href="#(icon_url)">-->
+    <!--   css   -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/oillab/default/css/news.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/common.css">
+</head>
+<body>
+<div id="base-container">
+    <!--顶部导航栏：包含公司信息和导航信息-->
+    <header id="header" class="row"></header>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- - - - - - - - - - - - - - - 页面主体内容 - - - - - - - - - - - - - - - - - - - - -->
+    <div class="main-container">
+        <div id="newContainer"></div>
+
+        <!--分页标签组件-->
+        <div class="row">
+            <div id="pagination" class="col-12">
+                <div id="pagination-container" class="col-12"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--页面底部：导航、公司信息和版权信息-->
+    <footer id="footer"></footer>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--   js   -->
+<script src="/static/plugins/art-template/template-web.js"></script>
+<script src="/static/plugins/jquery/2.1.4/jquery.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script src="/static/common/js/common.classes.js"></script>
+<script src="/static/common/js/entity.class.js"></script>
+<!--   js   -->
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script id="news-list-temp" type="text/html">
+    <div class="news-list">
+        {{each items item}}
+        <div class="row no-gutters news-item">
+            {{if item.coverImg}}
+            <div class="col-md-4">
+                <a href="{{item.url}}" title="{{item.title}}">
+                    <img src="{{item.coverImg}}" class="card-img news-img" alt="{{item.title}}">
+                </a>
+            </div>
+            <div class="col-md-8">
+            {{else}}
+            <div class="col-md-12">
+            {{/if}}
+                <div class="card-body news-body">
+                    <a href="{{item.url}}" title="{{item.title}}">
+                        <h4 class="card-title news-title">{{item .title}}</h4>
+                    </a>
+                    <p class="card-text">{{item.description}}</p>
+                    <div class="card-text news-time">发布时间：
+                        <time>{{item.pubTime | dateFormat "yyyy-M-d"}}</time>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+
+<script>
+    // 渲染网页顶部导航栏和网页底部信息
+    renderHeaderAndFooter("news");
+
+    new Promise(() => {
+        $.get("/api/v1/article/news", (result) => {
+            TemplateManager.renderByScriptId("news-list-temp",
+                "newContainer", {items: result.data.main.list});
+            TemplateManager.renderPagination("pagination-container", result.data.main);
+        });
+    });
+
+</script>
+
+</body>
+</html>

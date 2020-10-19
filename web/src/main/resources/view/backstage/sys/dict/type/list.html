@@ -1,0 +1,92 @@
+#setLocal(dataUrl = "/api/v1/sys/dict/type/find")
+
+#@bootstrap_html("字典类型管理", "")
+
+#define body()
+<div class="contact-box">
+    #@bootstrap_table("sysDictTypeTable", tableMeta, dataUrl, "operateFormatter")
+
+    #define tableToolbar()
+        <button type="button" class="btn btn-outline btn-default" onclick="add();">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加"></i>
+        </button>
+        <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+            <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除"></i>
+        </button><!--
+        <button type="button" class="btn btn-outline btn-default" onclick="">
+            <i class="glyphicon glyphicon-edit" aria-hidden="true" title="编辑"></i>
+        </button>-->
+        <button type="button" class="btn btn-outline btn-default" onclick="search();">
+            <i class="glyphicon glyphicon-search" aria-hidden="true" title="查找"></i>
+        </button>
+        <button type="button" class="btn btn-outline btn-default" onclick="importData();">
+            <i class="glyphicon glyphicon-import" aria-hidden="true" title="导入"></i>
+        </button>
+        <button type="button" class="btn btn-outline btn-default" onclick="exportData();">
+            <i class="glyphicon glyphicon-export" aria-hidden="true" title="导出"></i>
+        </button>
+    #end
+</div>
+#end
+
+#define js()
+<script>
+
+    function operateFormatter(value, row, index){
+        let temp =
+        '<button class="btn btn-primary btn-sm" title="edit" onclick="edit(\'{{row.id}}\')">编辑</button>' +
+        '<button class="btn btn-success btn-sm" title="list" onclick="dictDataList(\'{{row.id}}\')">列表</button>' +
+        '<button class="btn btn-danger btn-sm" title="delete" onclick="deleteById(\'{{row.id}}\')">删除</button>';
+        return TemplateManager.render("BsTableFormat.operate", temp, {row: row});
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加字典类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            resize: true,
+            content: ['/sys/dict/type/add', 'no']
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑字典类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            content: ['/sys/dict/type/update?id=' + id, 'no']
+        });
+        return false;
+    }
+
+    function dictDataList(id){
+        layer.open({
+            type: 2,
+            title: "字典数据",
+            area: ['800px', '600px'],
+            maxmin: true,
+            content: ['/sys/dict/list?type=' + id, 'no']
+        });
+        return false;
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> SysDictTypeController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#sysDictTypeTable",
+            (rows)=> SysDictTypeController.me.batchDelete(rows));
+    }
+
+    function search(){}
+
+    function importData(){}
+
+    function exportData(){}
+</script>
+#end

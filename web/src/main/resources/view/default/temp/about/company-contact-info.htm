@@ -1,0 +1,116 @@
+<!--联系我们-->
+<html>
+<head><meta charset="UTF-8"></head>
+<link rel="stylesheet" href="/static/plugins/rjdaoico/Rjdaoico.css">
+<body>
+<style>
+
+.contact-item {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.contact-item .text h3{
+    display: block;
+    height: 30px;
+    width: 100%;
+    line-height: 34px;
+    color: #444;
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+    margin: 0 auto;
+}
+.contact-item .text a {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 26px;
+    color: #444;
+    font-size: 18px;
+    text-align: left;
+}
+.contact-item dl {
+    width: 1px;
+    height: 40px;
+    background-color: #999;
+    margin: 10px 16px;
+    float: left;
+}
+.contact-item i {
+    display: block;
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    color: #444;
+    font-size: 40px;
+}
+</style>
+
+<div class="about-contact-info">
+    <div class="row">
+        <!--百度地图容器-->
+        <div id="show-address"></div>
+    </div>
+
+    <div class="row align-middle">
+        <div class="contact-item col-xl-3 col-sm-6">
+            <i class="icon-eec5"></i><dl></dl>
+            <div class="text tel">
+                <h3>联系电话</h3>
+                <a>{{info.company.phone}}</a>
+            </div>
+        </div>
+        <div class="contact-item col-xl-3 col-sm-6">
+            <i class="icon-ef98"></i><dl></dl>
+            <div class="text tel">
+                <h3>客服微信</h3>
+                <a>{{info.company.WeChat}}</a>
+            </div>
+        </div>
+        <div class="contact-item col-xl-3 col-sm-6">
+            <i class="icon-edc4"></i><dl></dl>
+            <div class="text address">
+                <h3>公司地址</h3>
+                <a>{{info.company.address}}</a>
+            </div>
+        </div>
+        <div class="contact-item col-xl-3 col-sm-6">
+            <i class="icon-ed24"></i><dl></dl>
+            <div class="text tel">
+                <h3>邮箱地址</h3>
+                <a>{{info.company.email}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--引入公司地图定位相关js-->
+<!--百度地图api-->
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+<!--封装的地图定位-->
+<script type="javascript" src="../js/markPosition.js"></script>
+<script type="javascript">
+    // 显示公司地图位置
+    function showMap(){
+        let mapId = "show-address";
+        // 地图中心点
+        let centerPointer = {latitude: 116.357126, longitude: 39.98684};
+
+        //标注点数组
+        let markerArr = [{
+            title:"{$WEB.Map_name}",
+            content:"全国咨询热线：{$WEB.tel}<br/>电话：{$WEB.phone}<br/>E-mail：{$WEB.email}<br/>地址：{$WEB.address}",
+            point:{latitude: 116.357126, longitude: 39.98684},
+            isOpen:1,
+            icon:{w:23,h:25,l:46,t:21,x:9,lb:12}
+        }];
+
+        //创建和初始化地图
+        initMap(mapId, centerPointer, markerArr);
+    }
+    // showMap();
+</script>
+
+</body>
+</html>

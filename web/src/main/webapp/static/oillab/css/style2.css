@@ -1,0 +1,38 @@
+/*小于1024像素*/
+@media all and (min-width:1200px){
+	.index-title{
+		height:50px;
+		margin:20px auto 20px auto;
+	}
+	.index-title h2{
+		display:block;
+		width:100%;
+		text-align:center;
+		height:30px;
+		line-height:30px;
+		font-size:20px;
+		color:#333;
+		font-weight: normal;
+	}
+	.index-title i{
+		display:none;
+		float:left;
+		height:50px;
+		line-height:50px;
+		font-size:24px;
+		color:#333;
+		font-weight: normal;
+		margin:0 6px;
+	}
+	.index-title em{
+		display:block;
+		width:100%;
+		text-align:center;
+		height:auto;
+		overflow:hidden;
+		line-height:20px;
+		font-size:14px;
+		color:#666;
+		text-transform:uppercase;
+	}
+}

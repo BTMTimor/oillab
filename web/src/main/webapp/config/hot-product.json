@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "XXX产品",
+    "url": "/product/xxx.html",
+    "type": "这是产品类型。",
+    "version": "这是产品型号。",
+    "description": "这是产品的简要描述……",
+    "img": "/static/oillab/images/pro1.jpg",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "XXX产品",
+    "url": "/product/xxx.html",
+    "type": "这是产品类型。",
+    "version": "这是产品型号。",
+    "description": "这是产品的简要描述……",
+    "img": "/static/oillab/images/pro1.jpg",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "XXX产品",
+    "url": "/product/xxx.html",
+    "type": "这是产品类型。",
+    "version": "这是产品型号。",
+    "description": "这是产品的简要描述……",
+    "img": "/static/oillab/images/pro1.jpg",
+    "show": true
+  },
+  {
+    "id": 4,
+    "name": "XXX产品",
+    "url": "/product/xxx.html",
+    "type": "这是产品类型。",
+    "version": "这是产品型号。",
+    "description": "这是产品的简要描述……",
+    "img": "/static/oillab/images/pro1.jpg",
+    "show": false
+  }
+]
+

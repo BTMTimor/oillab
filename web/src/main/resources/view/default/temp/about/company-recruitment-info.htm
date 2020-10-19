@@ -1,0 +1,100 @@
+<!--人才招聘-->
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<style>
+    .recruit-item{
+        margin-top: 15px;
+        padding: 15px 15px 45px 15px;
+        background-color: #EEEEEE;
+    }
+    .recruit-item .con{
+        padding-bottom: 20px;
+    }
+
+    .about-recruit .recruit-item h2{
+        width: 90%;
+        height: 20px;
+        padding-left: 10px;
+        border-left: 6px solid #1175B3;
+        line-height: 20px;
+        color: #333;
+        font-size: 18px;
+        font-weight:  normal;
+        margin-bottom: 10px;
+    }
+    .about-recruit .recruit-item h3{
+        width: 90%;
+        height: 16px;
+        padding-left: 10px;
+        border-left: 6px solid #1175B3;
+        line-height: 16px;
+        color: #333;
+        font-size: 16px;
+        font-weight:  normal;
+        margin-bottom: 10px;
+        margin-top: 15px;
+    }
+    .about-recruit .recruit-item h4{
+        width: 94%;
+        height: auto;
+        line-height: 20px;
+        color: #333;
+        font-size: 16px;
+        margin: 4px 0 6px 4px;
+        font-weight: normal;
+    }
+    .about-recruit .recruit-item p{
+        margin: 0 0;
+        width: 94%;
+        line-height: 20px;
+        color: #555;
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    .about-recruit .recruit-item .mailbox{
+        display: block;
+        height: 30px;
+        padding: 0 20px;
+        background-color: #1175B3;
+        line-height: 30px;
+        color: #fff;
+        font-size: 16px;
+    }
+</style>
+<img src="/static/oillab/images/join-bj.jpg" class="figure-img img-fluid rounded" alt="{{info.name}}">
+<div class="recruit-row row">
+    {{each info.jobs temp}}
+    {{if temp.show}}
+    <div class="col-xl-6 col-sm-12">
+        <div class="recruit-item">
+            <div class="con">
+                <h2>{{temp.name}}</h2>
+
+                <h4>岗位职责：</h4>
+                {{each temp.responsibilities responsibility index}}
+                <p>{{index}}. {{responsibility}}</p>
+                {{/each}}
+
+                <h3>岗位要求</h3>
+                {{each temp.requirements requirement index}}
+                <p>{{index}}. {{requirement}}</p>
+                {{/each}}
+
+                {{if temp.benefits}}
+                <h3>福利待遇</h3>
+                {{each temp.benefits benefit index}}
+                <p>{{index}}. {{benefit}}</p>
+                {{/each}}
+                {{/if}}
+            </div>
+            <div>
+                <a href="mailto: {{info.email}}" class="mailbox float-right">投递邮箱：{{info.email}}</a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</div>
+</body>
+</html>

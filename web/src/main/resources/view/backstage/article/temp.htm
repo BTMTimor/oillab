@@ -1,0 +1,30 @@
+#@bootstrap_html("文章详情", "")
+
+#define body()
+<link href="/static/css/article.css" rel="stylesheet"/>
+<div class="row">
+    <div id="article">
+        <div class="article-con col-md-12">
+            <h1 class="article-title">{{article.title}}</h1>
+            <p class="article-info">
+                <span class="fa fa-calendar"></span>
+                {{article.pubTime}}
+                <span class="fa fa-user"></span>
+                {{article.author}}
+                <span class="fa fa-eye"></span>
+                {{article.views}}次
+            </p>
+            <div class="article-content">
+                {{@ article.content}}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Promise(resolve => {resolve(ArticleModel.me.getById(1));})
+        .then(result => {
+            TemplateManager.renderToElement("article",
+                {name: "article"}, {article: result.data.main});
+        });
+</script>
+#end

@@ -1,0 +1,28 @@
+{
+  "modular": {
+    "modular": #include("modular.json"),
+    "type": #include("modular.type.json")
+  },
+  "friend": {
+    "chain": #include("friend.chain.json")
+  },
+  "html": {
+    "template": #include("html.template.json")
+  },
+  "sys": {
+    "dict": {
+      "dict": #include("sys.dict.dict.json"),
+      "type": #include("sys.dict.type.json")
+    },
+    "config": #include("sys.config.json")
+  },
+  "article": {
+    "type": #include("article.type.json"),
+    "article": #include("article.article.json")
+  },
+  "product": {
+    "product": #include("product.product.json"),
+    "category": #include("product.category.json"),
+    "type": #include("product.type.json")
+  }
+}

@@ -1,0 +1,48 @@
+[
+    {
+        "name": "id",
+        "type": "number",
+        "required": "ID_RULE",
+        "rangeValue": "-1024, 1023"
+    }, 
+    {
+        "name": "name",
+        "type": "text",
+        "required": "ADD_AND_UPDATE",
+        "rangeLength": "0, 64"
+    }, 
+    {
+        "name": "type",
+        "type": "text",
+        "required": "ADD_AND_UPDATE",
+        "rangeLength": "0, 32"
+    }, 
+    {
+        "name": "template",
+        "type": "text",
+        "required": "NOT_REQUIRED",
+        "rangeLength": "0, 2048"
+    }, 
+    {
+        "name": "remark",
+        "type": "text",
+        "required": "NOT_REQUIRED",
+        "rangeLength": "0, 256"
+    }, 
+    {
+        "name": "create_time",
+        "type": "datetime",
+        "required": "ADD_AND_UPDATE"
+    }, 
+    {
+        "name": "edit_time",
+        "type": "datetime",
+        "required": "ADD_AND_UPDATE"
+    }, 
+    {
+        "name": "status",
+        "type": "number",
+        "required": "ADD_AND_UPDATE",
+        "rangeValue": "-1024, 1023"
+    }
+]

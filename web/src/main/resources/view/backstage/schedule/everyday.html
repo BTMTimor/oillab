@@ -1,0 +1,80 @@
+#setLocal(dataUrl = "/api/v1/schedule/list")
+
+#@bootstrap_html("everyday", "")
+
+#define body()
+    #@bootstrap_card("everyday")
+
+    #define card_tools()
+        <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-wrench" title="折叠内容"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            <li><a href="/modular/add">添加栏目</a></li>
+        </ul>
+        <a class="close-link">
+            <i class="fa fa-times" title="关闭"></i>
+        </a>
+    #end
+
+    #define content()
+        #@bootstrap_table(tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加栏目"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default">
+                <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除所选"></i>
+            </button>
+        #end
+    #end
+#end
+
+#define js()
+<script src="/static/admin/js/plugins/layer/layer.js"></script>
+<script>
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm find" title="edit" onclick="edit(' + row.id + ')">编辑</button>',
+            '<a class="btn btn-success btn-sm update" href="/api/v1/modular/delete?id=' + row.id + '" title="delete">删除</a>',
+        ].join("");
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        let rows = getSelectedRows("##(bsTableId)");
+        alert("batch delete data......this function doesn't finished.");
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加栏目",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/modular/add'
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑栏目",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/modular/update?id=' + id
+        });
+        return false;
+    }
+
+</script>
+#end

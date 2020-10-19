@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "company",
+    "title": "公司简介",
+    "englishTitle": "COMPANY PROFILE",
+    "contentUrl": "temp/index/company-info.htm",
+    "config": "common-info.json",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "product",
+    "title": "产品展示",
+    "englishTitle": "PRODUCT DISPLAY",
+    "contentUrl": "temp/index/product-show.htm",
+    "config": "hot-product.json",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "solution",
+    "title": "应用案例",
+    "englishTitle": "APPLICATION CASE",
+    "contentUrl": "temp/index/application-case.htm",
+    "config": "application-case.json",
+    "show": true
+  },
+  {
+    "id": 4,
+    "name": "news",
+    "title": "新闻资讯",
+    "englishTitle": "NEWS AND INFORMATION",
+    "contentUrl": "temp/index/news-info.htm",
+    "config": "news.json",
+    "show": true
+  }
+]

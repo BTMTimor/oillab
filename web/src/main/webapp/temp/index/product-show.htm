@@ -1,0 +1,117 @@
+<!--首页产品展示-->
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<style>
+    .index-product {
+        margin: 0 auto;
+        text-align: center;
+        overflow: hidden;
+    }
+    .index-product .product-item {
+        vertical-align: middle;
+        width: 100%;
+        min-height: 410px;
+        background-color: #CCC;
+        overflow: hidden;
+        position: relative;
+        margin: 5px 6px;
+    }
+    .index-product .product-item .info {
+        width: 100%;
+        height: 160px;
+        position: absolute;
+        padding: 20px 0 0 0;
+        background: rgba(0,0,0, 0.2);
+        bottom: -60px;
+        left: 0;
+        z-index: 2;
+        transition-duration: 0.2s;
+    }
+    .index-product .product-item .info h2{
+        display: block;
+        font-weight: normal;
+        width: 90%;
+        height: 30px;
+        margin: 0 auto;
+        line-height: 30px;
+        text-align: center;
+        color: #333;
+        font-size: 20px;
+    }
+    .index-product .product-item .info h3{
+        display: block;
+        font-weight: normal;
+        width: 90%;
+        height: 30px;
+        margin: 0 auto;
+        line-height: 30px;
+        text-align: center;
+        color: #333;
+        font-size: 20px;
+    }
+    .index-product .product-item .info a {
+        display: block;
+        font-weight: normal;
+        width: 180px;
+        height: 42px;
+        margin: 28px auto 0 auto;
+        line-height: 42px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        border: 1px solid #999;
+        transition-duration: 0.2s;
+    }
+    .product-item img {
+        width: 100%;
+        /*min-height: 410px;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .index-product .product-item:hover .info {
+        background: rgba(0,0,0, 0.6);
+        bottom: 0;
+    }
+    .index-product .product-item:hover .info h2 {
+        color: #fff;
+    }
+    .index-product .product-item:hover .info h3 {
+        color: #fff;
+    }
+    .commonMoreBut {
+        display: block;
+        width: 140px;
+        height: 40px;
+        margin: 20px auto 30px auto;
+        border: 1px solid #888;
+        line-height: 40px;
+        font-size: 14px;
+        color: #444;
+        text-align: center;
+        border-radius: 3px;
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+</style>
+<div class="index-product">
+    <section class="row">
+        {{each info product index}}
+        <div class="col-xl-4 col-lg-6 col-sm-12">
+            <div class="product-item">
+                <div class="info">
+                    <h2>{{product.version}}</h2>
+                    <h3>{{product.name}}</h3>
+                    <a href="/product/{{product.category}}-{{product.type}}-{{product.id}}">查看详情</a>
+                </div>
+                <img src="{{product.coverImg}}" class="figure-img img-fluid rounded" alt="{{product.name}}">
+            </div>
+        </div>
+        {{/each}}
+    </section>
+    <div class="col-sm-12"><a href="/product" class="commonMoreBut">查看更多</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+#setLocal(dataUrl = "/api/v1/admin/list")
+
+#@bootstrap_html("用户管理", "")
+
+#define body()
+    #@bootstrap_card("用户管理")
+
+    #define content()
+        #@bootstrap_table("adminTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除"></i>
+            </button>
+        #end
+    #end
+#end
+
+
+#define js()
+<script src="/static/admin/js/plugins/layer/layer.js"></script>
+<script>
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-primary btn-sm find" title="edit" onclick="edit(' + row.id + ')">编辑</button>',
+            '<a class="btn btn-success btn-sm update" href="/api/v1/user/delete?id=' + row.id + '" title="delete">删除</a>',
+        ].join("");
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        let rows = getSelectedRows("#adminTable");
+        alert("batch delete data......this function doesn't finished.");
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加用户",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/user/add'
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑用户",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/user/update?id=' + id
+        });
+        return false;
+    }
+
+</script>
+#end

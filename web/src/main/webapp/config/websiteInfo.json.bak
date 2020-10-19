@@ -1,0 +1,12 @@
+{
+  "name": "奥莱博(武汉)科技有限公司",
+  "logo": "/static/oillab/img/logo-tm.png",
+  "icon": "/favicon.ico",
+  "keyWords": "奥莱博(武汉)科技有限公司",
+  "description": "这是网站的简要描述……",
+  "domainName": "timor.com",
+  "serverAddress": "http://timor.com/",
+  "caseNumber": "京ICP备00000000号",
+  "copyright": "Copyright © 2020  奥莱博(武汉)科技有限公司. All Rights Reserved. ",
+  "showI18n": true
+}

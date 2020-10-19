@@ -1,0 +1,63 @@
+#@bootstrap_html("编辑产品类型", "")
+
+#define body()
+<div class="col-md-12">
+    <form id="productTypeForm">
+        <input type="hidden" name="id" class="form-control" value="#(entity.id??'')">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">产品类型名称：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" placeholder="请输入产品类型名称" value="#(entity.name??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">产品种类：</label>
+            <div class="col-sm-9">
+                <select id="category" name="category" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">产品类型描述：</label>
+            <div class="col-sm-9">
+                <input type="text" name="description" class="form-control" placeholder="请输入产品类型描述" value="#(entity.description??)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">状态：</label>
+            <div class="col-sm-9">
+                <select id="statusId" name="status" class="form-control"></select>
+                <script>renderSelect("statusId", "1221", '#(entity.status??1)');</script>
+            </div>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button class="btn btn-success" onclick="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="productTypeTemp" type="text/html">
+    {{each items item index}}
+    <option value="{{item.id}}">{{item.name}}</option>
+    {{/each}}
+</script>
+
+<script>
+    new Promise(resolve => {
+        resolve(ProductCategoryController.me.findByCondition({}));
+    }).then(data => {
+        let temp = document.getElementById("productTypeTemp").innerText;
+        $("#category").html(TemplateManager.render("select", temp, {items: data.data.main}));
+    }).then(() => $("#category").val("#(entity.category??'')"));
+
+    function save() {
+        ProductTypeController.me.updateByForm("#productTypeForm");
+    }
+</script>
+#end

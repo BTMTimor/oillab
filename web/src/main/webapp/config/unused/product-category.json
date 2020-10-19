@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "xxx实验仪器",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "xxx实验仪器2",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "xxx实验仪器3",
+    "show": true
+  },
+  {
+    "id": 4,
+    "name": "xxx实验仪器4",
+    "show": true
+  },{
+  "id": 5,
+  "name": "xxx实验仪器5",
+  "show": true
+},
+  {
+    "id": 6,
+    "name": "xxx实验仪器6",
+    "show": true
+  },
+  {
+    "id": 7,
+    "name": "xxx实验仪器7",
+    "show": true
+  },
+  {
+    "id": 8,
+    "name": "xxx实验仪器8",
+    "show": true
+  }
+]

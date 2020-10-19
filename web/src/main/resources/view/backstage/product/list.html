@@ -1,0 +1,88 @@
+#setLocal(dataUrl = "/api/v1/product/find")
+
+#@bootstrap_html("产品管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("productTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+            <button type="button" class="btn btn-outline btn-default" onclick="add();">
+                <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加产品"></i>
+            </button>
+            <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+                <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除所选"></i>
+            </button>
+        #end
+    </div>
+#end
+
+#define js()
+<script>
+    function operateFormatter(value, row, index){
+        return [
+            '<button class="btn btn-success btn-sm" title="preview" onclick="preview(\'' + row.id + '\')">预览</button>',
+            '<button class="btn btn-primary btn-sm" title="edit" onclick="edit(\'' + row.id + '\')">编辑</button>',
+            '<button class="btn btn-danger btn-sm" title="delete" onclick="deleteById(\'' + row.id + '\')">删除</button>',
+        ].join("");
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加产品",
+            area: ['75%', '80%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/product/add'
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑产品",
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/product/update?id=' + id
+        });
+        return false;
+    }
+
+    function preview(id) {
+        layer.open({
+            type: 2,
+            title: "产品信息",
+            area: ['90%', '80%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: '/product/preview?id=' + id
+        });
+        return false;
+
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> ProductController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#productTable",
+            (rows)=> ProductController.me.batchDelete(rows));
+    }
+
+    // todo 返回资源数量
+    function resourceFormat(value){
+        let resources = JSON.parse(value);
+        // console.log(value);
+        // for (let i in resources) {
+        //      console.log(i + ": " + resources[i].original)
+        // }
+
+        return resources.length;
+    }
+
+</script>
+#end

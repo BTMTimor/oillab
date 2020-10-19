@@ -1,0 +1,59 @@
+#--
+    ueditor富文本组件
+    依赖：bootsrtap、jquery
+--#
+#define ueditor(id, filedName, content, baseUrl)
+<html>
+<head><meta charset="UTF-8"></head>
+<script src="/static/plugins/ueditor/ueditor.config.js"></script>
+<script src="/static/plugins/ueditor/ueditor.all.js"></script>
+<!--<script src="/static/plugins/ueditor/lang/en/en.js"></script>-->
+<script src="/static/plugins/ueditor/lang/zh-cn/zh-cn.js"></script>
+<style>.ueditor, .ueditor textarea, .ueditor .edui-editor, .ueditor .edui-editor-iframeholder{width: 100% !important;}</style>
+<body>
+
+<div class="ueditor">
+    <textarea id="#(id)" name="#(filedName)">#(content)</textarea>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        //初始化编辑器
+        let contentEditor = new UE.ui.Editor({
+
+        });
+        //将编辑器渲染到textarea上
+        contentEditor.render("#(id)");
+    });
+
+    /**
+     * 设置百度编辑器上传action
+     * */
+    UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+    UE.Editor.prototype.getActionUrl = function(action) {
+        const actionMapping = {
+            "config": "#(baseUrl)/config",
+            "uploadFile": "#(baseUrl)/upFile",
+            "uploadImage": "#(baseUrl)/upImage",
+            "uploadVideo": "#(baseUrl)/upVideo",
+            "uploadScrawl": "#(baseUrl)/upScrawl",
+            "liLoadStFile" : "#(baseUrl)",
+            "liLoadsTImage" : "#(baseUrl)",
+            "caLoadTchImage": "#(baseUrl)",
+            "uploadSnapScreen": "#(baseUrl)"
+        };
+        let actionUrl = actionMapping[action];
+        if (actionUrl == null){
+            // console.log("[actionMapping] falure: " + action);
+            actionUrl = this._bkGetActionUrl.call(this, action)
+            actionMapping[action] = actionUrl;
+        }
+        // console.log("action{name: " + action +", url: "+ actionUrl +"}");
+        // console.log(actionMapping);
+        return actionUrl;
+    };
+</script>
+
+</body>
+</html>
+#end

@@ -1,0 +1,69 @@
+[
+  {
+    "name": "id", "type": "string",
+    "label": "id",
+    "required": "ID_RULE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "name", "type": "string",
+    "label": "名称",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  {
+    "name": "category", "type": "string",
+    "label": "种类",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "type", "type": "string",
+    "label": "类型",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "model", "type": "string",
+    "label": "型号",
+    "required": "NOT_REQUIRED",
+    "minLength": 1,
+    "maxLength": 128
+  },
+  {
+    "name": "coverImg", "type": "string",
+    "label": "引导图",
+    "required": "NOT_REQUIRED",
+    "minLength": 0,
+    "maxLength": 255
+  },
+  {
+    "name": "description", "type": "string",
+    "label": "描述",
+    "required": "NOT_REQUIRED",
+    "minLength": 0,
+    "maxLength": 255
+  },
+  {
+    "name": "introduction", "type": "string",
+    "label": "介绍",
+    "required": "NOT_REQUIRED",
+    "minLength": 0
+  },
+  {
+    "name": "resource", "type": "string",
+    "label": "资料",
+    "required": "NOT_REQUIRED",
+    "minLength": 0,
+    "maxLength": 1024
+  },
+  {
+    "name": "status", "type": "int",
+    "label": "状态",
+    "required": "ADD_AND_UPDATE"
+  }
+]

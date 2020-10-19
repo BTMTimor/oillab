@@ -1,0 +1,40 @@
+#--
+    自定义图片上传
+    图片默认上传链接：/ueditor/upImage
+--#
+#define my_img_upload2(title, imgId, imgName, supportImgTypes, value)
+
+<div id="#(imgName)container">
+    <div class="my-img-upload">
+        <label>{{item.title}}：</label>
+        <button id="{{item.upImgBtnId}}" class="btn btn-upload upImgBtn">开始上传</button>
+        <button id="{{item.clearBtnId}}" class="btn btn-danger clearImgBtn" >清除图片</button>
+        <label id="{{item.inputImageLabel}}" title="{{item.title}}" for="{{item.imgFileId}}" class="btn btn-primary input-image-label">
+            选择图片
+            <input type="file" accept="{{item.imgType}}" id="{{item.imgFileId}}" class="hide">
+            <input type="text" id="{{item.imgId}}" name="{{item.imgName}}" value="{{item.value}}" class="hide">
+        </label>
+        <button id="{{item.previewBtnId}}" class="btn btn-success previewBtn">预览图片</button>
+    </div>
+    <style>
+        .my-img-upload{line-height: 32px; padding: 5px 15px 0;}
+        .my-img-upload > label{display: inline-block;}
+        .my-img-upload .upImgBtn, .previewBtn, .clearImgBtn{display: none;}
+        .my-img-upload .input-image-label, .upImgBtn, .previewBtn, .clearImgBtn{float: right;}
+        .img-preview {display: block;margin: 0 auto; padding: 20px; min-width: 300px;}
+    </style>
+</div>
+
+<script>
+    $(function (){
+        let myFileUpload = new MyImgUpload("#(supportImgTypes)", {
+            title: "#(title)",
+            randId: "#(randId)",
+            imgId: "#(imgId)", imgName: "#(imgName)",
+            defaultValue: "#(value)"
+        });
+        TemplateManager.renderByEId("#(imgName)container", {item: myFileUpload});
+        myFileUpload.init();
+    });
+</script>
+#end

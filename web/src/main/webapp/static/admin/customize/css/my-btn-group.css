@@ -1,0 +1,47 @@
+/*我的导航按钮组*/
+/*-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+.my-btn-group{
+    padding: 20px 0;
+    width: 100%;
+}
+
+.my-btn-group > span{
+    background-color: #e3e3e3;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 20px;
+    margin: 5px 10px 5px 0;
+    float: left;
+}
+
+.my-btn-group > a:hover{
+    background-color: #1175B3;
+    color: white;
+}
+
+.my-btn-group .my-btn{
+    background-color: #e3e3e3;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 20px;
+    margin: 5px 10px;
+    float: left;
+}
+
+.my-btn-group .selected{
+    background-color: #1175B3;
+    color: white;
+}
+
+a:link, a:visited{
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+

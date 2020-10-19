@@ -1,0 +1,100 @@
+#--
+    自定义图片上传
+--#
+#define my_img_upload(title, imgId, imgName)
+
+### 随机ID生成
+#setLocal(randId = getUUID())
+#if(!imgId) #set(imgId = "img_" + randId) #end
+#setLocal(clearBtnId = "clearBtnId_" + randId)
+#setLocal(imgFileId = "imgFile_" + randId)
+#setLocal(imgPreviewDiv = "imgPreviewD_" + randId)
+#setLocal(imgPreviewContainer = "imgPreviewC_" + randId)
+
+<div class="ibox float-e-margins img-show-container">
+    <div class="ibox-content no-borders">
+        <label style="display: inline-block;">#(title)：</label>
+        <button id="#(clearBtnId)" class="btn btn-danger clearImgBtn" >清除图片</button>
+        <label title="#(title)" for="#(imgFileId)" class="btn btn-primary input-image-label">
+            <input type="file" accept="image/*" id="#(imgFileId)" class="hide"> 选择#(title)
+            <input type="text" id="#(imgId)" name="#(imgName)" hidden="" value="">
+        </label>
+        <div class="row" id="#(imgPreviewContainer)" hidden="">
+            <div class="col-md-12">
+                <h4>图片预览：</h4>
+                <div class="img-preview col-md-12" id="#(imgPreviewDiv)"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .img-show-container{
+        margin: 0 auto;
+        /*margin: 0 30px 15px 30px;*/
+    }
+
+    .img-show-container .ibox-content{
+        border: deepskyblue solid 0;
+    }
+    .clearImgBtn{
+        display: none;
+    }
+
+    .input-image-label, .clearImgBtn{
+        float: right;
+    }
+    .img-preview {
+        display: inline-block;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<script>
+    // 996px ==> 996
+    function getNumberOfSize(size){
+        return parseInt(size.substring(0, size.length-2));
+    }
+
+    // 图片上传事件
+    $("##(imgFileId)").change(function () {
+        let file = this.files[0];
+        console.log(file);
+        let preview = $("##(imgPreviewDiv)");
+        if(file.type.indexOf("image") === 0) {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+                // 图片base64化
+                let base64Img = e.target.result;
+                //加载图片获取图片真实宽度和高度
+                let image = new Image();
+                image.src = base64Img;
+                // 图片先加载完，才可以得到图片宽度和高度
+                image.onload = function(){
+                    $("##(imgPreviewContainer)").removeAttr("hidden");
+
+                    let preWidth = getNumberOfSize(preview.css("width")) / image.width * 100;
+                    let preHeight = preWidth  / 100 * image.height;
+
+                    preview.css("height", preHeight);
+                    preview.css("background-image", 'url("' + base64Img + '")');
+                    console.log(typeof(base64Img));
+
+                    $("##(imgId)").val(file.name);
+                    $("##(clearBtnId)").css("display", "inline");
+                }
+            };
+        }
+    });
+
+    // 清除图片
+    $("##(clearBtnId)").on("click", function () {
+        $("##(imgId)").val("");
+        $("##(imgPreviewContainer)").attr("hidden", "hidden");
+        $("##(imgFileId)").addClass("hide");
+        $("##(clearBtnId)").css("display", "none");
+        return false;
+    });
+</script>
+#end

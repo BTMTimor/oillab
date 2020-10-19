@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'war'
+}
+
+apply plugin:  'war'
+
+group 'xyz.xpman'
+version '1.0'
+
+dependencies {
+    // 将 jfinal-undertow 和 jetty-server 有关依赖全部删除，
+    // 否则部署到 tomcat 中会产生冲突
+    compile "com.jfinal:jfinal-undertow:${jfinalUndertowVersion}"
+
+    compile project(':business')
+}
+
+
+
+
+/*
+task runMain(dependsOn: 'classes', type: JavaExec) {
+    main = 'xyz.xpman.Main'
+    // classpath = sourceSets.main.runtimeClasspath
+    classpath sourceSets.main.java.outputDir
+}
+*/
+
+

@@ -1,0 +1,62 @@
+#setLocal(dataUrl = "/api/v1/carousel/find")
+
+#@bootstrap_html("字典管理", "")
+
+#define body()
+<div class="ibox-content">
+    <table id="tableId"></table>
+</div>
+#end
+
+#define js()
+<script src="/static/admin/js/plugins/layer/layer.js"></script>
+<script id="operateItem" type="text/html">
+{{each items item}}
+{{if "button" == item.type}}
+<button class="btn {{item.class}} btn-sm" onclick="{{item.onclick}}('{{row.id}}')">{{item.title}}</button>
+{{else if "link" == item.type}}
+<a class="btn {{item.class}} btn-sm" href="{{item.url}}?id={{row.id}}">{{item.title}}</a>
+{{/if}}
+{{/each}}
+</script>
+<script>
+    let metaData = [
+        {
+            type: "button",
+            title: "编辑",
+            class: "btn-primary",
+            onclick: "edit",
+        },{
+            type: "link",
+            title: "删除",
+            url: "/api/v1/test/delete",
+            class: "btn-danger",
+            onclick: "delete",
+        }
+    ];
+
+    function operateFormat(value, row, index){
+        let data = {items: metaData, value: value, row: row, index: index};
+        return TemplateManager.renderByScriptId("operateItem", "", data);
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑字典",
+            area: ['700px', '650px'],
+            maxmin: true,
+            content: '/test'
+        });
+        return false;
+    }
+
+    new Promise(resolve => {
+        // 获取columnInfo
+        let result = WebDao.get("/gen/test");
+        resolve(JSON.parse(result));
+    }).then(columns => {
+        initBootstrapTable2("#tableId", '#(dataUrl)', columns);
+    })
+</script>
+#end

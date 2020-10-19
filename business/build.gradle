@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+apply plugin: 'checkstyle'
+
+group 'xyz.xpman'
+version '1.0'
+
+dependencies {
+    compile project(':model')
+}

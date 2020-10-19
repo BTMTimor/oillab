@@ -1,0 +1,50 @@
+#-- bootstrap_table：bootstrap表格模板
+    @param tableDesc：表格元数据，如高度宽度
+    @param tableColDesc：表格列元数据，如列宽，是否显示等
+    @param dataUrl：表格数据来源的url
+    @param operateFormatter：生成列尾操作列需要的函数名
+--#
+#define bootstrap_table(tableDesc, tableColDesc, dataUrl, operateFormatter)
+#setLocal(fields = tableColDesc)
+
+### 随机ID生成
+#setLocal(randId = getUUID())
+#setLocal(bsTableToolBarId = "bsTableToolBar_" + randId)
+#setLocal(bsTableId = "bsTable_" + randId)
+
+<div class="table-wrap">
+    <div class="my-table">
+        <div class="btn-group hidden-xs" id="#(bsTableToolBarId)" role="group">
+            #@tableToolbar?()
+        </div>
+        #if(tableDesc)
+            #setLocal(tableHeight = tableDesc.height ? 'data-height="' + tableDesc.height + '"' : '')
+            #setLocal(tableWidth = tableDesc.width ? 'data-width="' + tableDesc.width + '"' : '')
+        #end
+        <table id="#(bsTableId)" #(tableHeight) #(tableWidth) data-mobile-responsive="true">
+            #if(fields)
+            <thead>
+            <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                #for(field : fields)
+                #if(field)
+                <th data-field="#(field.paraName)">#(field.label)</th>
+                #end
+                #end
+                #if(notBlank(operateFormatter))
+                <th data-field="operate" data-formatter="#(operateFormatter)">操作</th>
+                #end
+            </tr>
+            </thead>
+            #end
+        </table>
+    </div>
+</div>
+
+<script>
+    // 初始化表格
+    initBootstrapTable("##(bsTableId)",
+        "##(bsTableToolBarId)", "#(dataUrl)");
+</script>
+#end
+

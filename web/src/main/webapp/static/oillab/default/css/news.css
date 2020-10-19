@@ -1,0 +1,40 @@
+
+.news-item{
+    position: relative;
+    /*height: 175px;*/
+    min-height: 225px;
+    margin: 10px 0;
+    border: 1px solid lightgray;
+}
+
+.news-item:hover .news-body{
+    background-color: lightgrey;
+}
+
+.btn-group{
+    margin: 0 auto !important;
+}
+
+.news-item .news-img{
+    height: 225px;
+}
+
+.news-item .news-title{}
+
+.news-item .news-time{
+    position: absolute;
+    margin-bottom: -30px;
+}
+
+.news-item .news-body{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+a:link, a:visited{
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+

@@ -1,0 +1,88 @@
+#@bootstrap_html("添加", "")
+
+#define body()
+<div class="ArticleContainer">
+    <form id="ArticleForm">
+        <input type="hidden" name="id" readonly class="form-control" placeholder="" value="#(entity.id??)">
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required" for="midId">所属板块：</label>
+            <div class="col-sm-10">
+                <select id="midId" name="mid" class="form-control"></select>
+                <script>
+                    renderSelectByUrl("midId", "/api/v1/modular/type/list", "title", "id", '#(entity.type??)');
+                </script>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required" for="titleId">标题：</label>
+            <div class="col-sm-10">
+                <input id="titleId" type="text" name="title" class="form-control" placeholder="" value="#(entity.title??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">文章类型：</label>
+            <div class="col-sm-10">
+                <select id="typeId" name="type" class="form-control"></select>
+                <script>
+                    renderSelectByUrl("typeId", "/api/v1/article/type/list", "title", "id", '#(entity.type??)');
+                </script>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="authorId">文章作者：</label>
+            <div class="col-sm-10">
+                <input id="authorId" type="text" name="author" class="form-control" placeholder="" value="#(entity.author??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="descriptionId">概要：</label>
+            <div class="col-sm-12">
+                <textarea id="descriptionId" name="description" class="full-width" placeholder="">#(entity.description??)</textarea>
+            </div>
+        </div>
+        #@my_img_upload2("引导（封面）图片", "coverImgId", "coverImg", "", entity.coverImg??)
+        <!--产品介绍-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">文章内容：</label>
+            <div class="col-sm-12">
+                #@ueditor("contentId", "content", entity.content??, "/ueditor")
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="col-sm-3 control-label">排序值：</label>
+            <div class="col-sm-9">
+                <input type="text" name="sort" class="form-control" placeholder="请输入排序值（建议取以10倍数）">
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="pubTimeId">发布时间：</label>
+            <div class="col-sm-10">
+                <input id="pubTimeId" type="text" name="pubTime" class="form-control" placeholder="" value="#(entity.pubTime??now)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label is-required">状态：</label>
+            <div class="col-sm-10">
+                <select id="statusId" name="status" class="form-control"></select>
+                <script>renderSelect("statusId", "1221", '#(entity.status??1)');</script>
+            </div>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button class="btn btn-success" onclick="save()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+
+#define js()
+<script>
+    function save() {
+        ArticleController.me.updateByForm("#ArticleForm");
+    }
+</script>
+#end

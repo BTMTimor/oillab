@@ -1,0 +1,120 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group 'xyz.xpman'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '4.11'
+
+    jfinalVersion = '4.9'
+    jfinalUndertowVersion = '2.2'
+    jfinalCosVersion = '2020.4'
+
+    slf4jNopVersion = '1.7.29'
+    log4jVersion = '1.2.17'
+
+    // mysqlConnectorVersion = '5.1.44'
+    mysqlConnectorVersion = '8.0.21'
+    druidVersion = '1.0.29'
+
+    annotationsVersion = '20.0.0'
+
+    javaxServletApiVersion = "4.0.1"
+
+    snakeyamlVersion = "1.24"
+    commonsIoVersion = '2.5'
+    fastjsonVersion = '1.2.73'
+    cron4jVersion = '2.2.5'
+    ehcacheVersion = '2.10.6'
+    // Version = ''
+}
+
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileJava {
+        options.compilerArgs << '-parameters'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+
+    // - - - - - - - - - - - - - - - - - - - - - - -
+}
+
+dependencies {
+    testCompile (
+            "junit:junit:${junitVersion}"
+    )
+}
+
+
+subprojects {
+
+    configurations {
+        provided
+    }
+
+    sourceSets.main.compileClasspath += configurations.provided
+    sourceSets.test.compileClasspath += configurations.provided
+    sourceSets.test.runtimeClasspath += configurations.provided
+    // - - - - - - - - - - - - - - - - - - - - - - -
+
+
+    dependencies {
+        testCompile (
+                "junit:junit:${junitVersion}"
+        )
+
+    }
+    // - - - - - - - - - - - - - - - - - - - - - - -
+
+    task copyResources(type: Copy) {
+        from sourceSets.main.resources
+        into sourceSets.main.java.outputDir
+        // into 'out/production/classes'
+        processResources.exclude("**/*.*")
+    }
+    processResources.dependsOn(copyResources);
+
+
+    // 打包 zip-web
+    task zip(type:Zip, dependsOn:['clean', 'jar']){
+        metadataCharset "UTF-8"
+        extension "zip"
+        into(project.name){
+            from(project.rootDir){
+                fileMode(755)
+                // include '**/*.bat'
+                include ('*.sh', '*.bat')
+                exclude ('gradlew.sh', 'gradlew.bat')
+            }
+            into("lib"){
+                from(configurations.compile)
+                from('build/libs/')
+            }
+            into("config"){
+                from(sourceSets.main.resources)
+            }
+            into("webapp"){
+                from("src/main/webapp")
+            }
+        }
+    }
+
+}

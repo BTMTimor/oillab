@@ -1,0 +1,67 @@
+[
+  {
+    "name": "id",
+    "type": "string",
+    "label": "主键",
+    "required": "ID_RULE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "name",
+    "type": "string",
+    "label": "名称",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 64
+  },
+  {
+    "name": "type",
+    "type": "string",
+    "label": "类型",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 64
+  },
+  {
+    "name": "title",
+    "type": "string",
+    "label": "标题",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 64
+  },
+  {
+    "name": "englishTitle",
+    "type": "string",
+    "label": "英语标题",
+    "required": "NOT_REQUIRED",
+    "minLength": 1,
+    "maxLength": 64
+  },
+  {
+    "name": "config",
+    "type": "string",
+    "label": "配置",
+    "required": "NOT_REQUIRED",
+    "minLength": 0,
+    "maxLength": 128
+  },
+  {
+    "name": "url",
+    "type": "string",
+    "label": "跳转链接",
+    "required": "NOT_REQUIRED"
+  },
+  {
+    "name": "sort",
+    "type": "int",
+    "label": "排序",
+    "required": "NOT_REQUIRED"
+  }, {
+    "name": "status",
+    "label": "状态",
+    "type": "int",
+    "required": "ADD_AND_UPDATE"
+  }
+]

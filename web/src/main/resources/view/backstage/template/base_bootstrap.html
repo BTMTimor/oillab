@@ -1,0 +1,35 @@
+### test
+#define bootstrap_html(title, icon_url)
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    #@meta?()
+    <title>#(title)</title>
+    #if(notBlank(icon_url))
+    <link rel="shortcut icon" href="#(icon_url)">
+    #end
+    <!--   css   -->
+    <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/admin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/static/admin/css/animate.min.css" rel="stylesheet">
+<!--    <link href="/static/admin/css/style.min.css" rel="stylesheet">-->
+    #@css?()
+    <!--   js   -->
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/static/admin/js/bootstrap.min.js"></script>
+<!--    <script src="/static/admin/js/content.min.js"></script>-->
+<!--    <script src="/static/admin/js/test/myCommon.js"></script>-->
+    <script src="/static/admin/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/static/admin/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="/static/admin/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    #@hjs?()
+</head>
+<body>
+#@body?()
+<!--   js   -->
+#@js?()
+</body>
+</html>
+#end

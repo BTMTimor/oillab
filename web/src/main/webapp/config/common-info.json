@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "data": {
+    "main": {
+      "website": #include('websiteConfig.json'),
+      "template": #include('templateInfo.json'),
+      "company": #include('organizationConfig.json')
+    }
+  },
+  "message": "成功"
+}

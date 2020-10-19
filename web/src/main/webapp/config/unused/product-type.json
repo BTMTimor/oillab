@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "xxx仪",
+    "description": "产品功能描述……",
+    "url": "",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "xxx仪",
+    "description": "产品功能描述……",
+    "url": "",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "xxx仪",
+    "description": "产品功能描述……",
+    "url": "",
+    "show": true
+  },
+  {
+    "id": 4,
+    "name": "xxx仪",
+    "description": "产品功能描述……",
+    "url": "",
+    "show": true
+  }
+]

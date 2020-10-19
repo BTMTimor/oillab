@@ -1,0 +1,31 @@
+<!--首页公司简介-->
+<html>
+<head><meta charset="UTF-8"></head>
+<link rel="stylesheet" href="/static/plugins/rjdaoico/Rjdaoico.css">
+<body>
+<div class="index-about-us">
+    <div class="row">
+        <div class="col-xl-8 col-sm-12">
+            <div class="index-about-item company-info">
+                <div class="info">
+                    <h1>{{info.company.name}}</h1>
+                    <p>{{info.company.description}}</p>
+                    <a href="/article/5">查看详情</a>
+                </div>
+                <img src="{{info.company.indexShowImg}}" alt="公司简介">
+            </div>
+        </div>
+        <div class="col-xl-4 col-sm-12">
+            <div class="index-about-item about-video">
+                <div class="videoDiv" id="videoDiv" style="display: none;">
+                    <iframe height="440" width="900" frameborder="0" allowfullscreen=""
+                            src="{{info.company.introduceVideoUrl}}"></iframe>
+                </div>
+                <i class="icon-ecad" id="openVideoBut"></i>
+                <img src="{{info.company.videoCover}}" alt="视频简介">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

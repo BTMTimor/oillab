@@ -1,0 +1,72 @@
+#@bootstrap_html("网站设置", "")
+
+#define body()
+<div class="ibox-content">
+    <form id="settingForm">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">网站名称：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" placeholder="" value="#(entity.name)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">网站域名：</label>
+            <div class="col-sm-9">
+                <input type="text" name="domainName" class="form-control" placeholder="timor.com"  value="#(entity.domainName)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">服务器地址：</label>
+            <div class="col-sm-9">
+                <input type="text" name="serverAddress" class="form-control" placeholder="http://timor.com/" value="#(entity.serverAddress)">
+            </div>
+        </div>
+
+        #@my_img_upload2("网站Logo", "logoId", "logo", "", entity.logo)
+
+        #@my_img_upload2("网站图标", "iconId", "icon", "image/x-icon", entity.icon)
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">关键词：</label>
+            <div class="col-sm-9">
+                <input type="text" name="keyWords" class="form-control" placeholder="多个关键字用英文,隔开" value="#(entity.keyWords)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">描述：</label>
+            <div class="col-sm-9">
+                <input type="text" name="description" class="form-control" placeholder="" value="#(entity.description)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">备案号：</label>
+            <div class="col-sm-9">
+                <input type="text" name="caseNumber" class="form-control" placeholder="京ICP备00000000号" value="#(entity.caseNumber)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">底部版权信息：</label>
+            <div class="col-sm-9">
+                <textarea type="text" name="copyright" class="form-control" placeholder="Copyright © 2020  XXX有限公司. All Rights Reserved. ">#(entity.copyright)</textarea>
+            </div>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" onclick="saveSetting()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function saveSetting() {
+        let formData = getFormDataToJsObject("#settingForm");
+        console.log(formData);
+        let result = WebDao.post("/api/v1/setting/website/update", formData);
+        console.log(result);
+        // ProductController.me.add(Product.fromObject(formData));
+    }
+</script>
+#end

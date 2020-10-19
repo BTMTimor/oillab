@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "company",
+    "title": "公司简介",
+    "englishTitle": "COMPANY PROFILE",
+    "contentUrl": "temp/about/company-info.htm",
+    "config": ".json",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "culture",
+    "title": "企业文化",
+    "englishTitle": "ENTERPRISE CULTURE",
+    "contentUrl": "temp/about/company-culture.htm",
+    "config": ".json",
+    "show": true
+  },
+  {
+    "id": 3,
+    "name": "advantage",
+    "title": "企业优势",
+    "englishTitle": "COMPANY ADVANTAGES",
+    "contentUrl": "temp/about/company-advantage.htm",
+    "config": ".json",
+    "show": true
+  },
+  {
+    "id": 4,
+    "name": "course",
+    "title": "发展历程",
+    "englishTitle": "DEVELOPMENT HISTORY",
+    "contentUrl": "temp/about/company-course.htm",
+    "config": "course-info.json",
+    "show": true
+  },
+  {
+    "id": 5,
+    "name": "recruit",
+    "title": "人才招聘",
+    "englishTitle": "RECRUITMENT INFORMATION",
+    "contentUrl": "temp/about/company-recruitment-info.htm",
+    "config": "recruitment-info.json",
+    "show": true
+  },
+  {
+    "id": 6,
+    "name": "contact-info",
+    "title": "联系我们",
+    "englishTitle": "CONTACT US",
+    "contentUrl": "temp/about/company-contact-info.htm",
+    "config": "common-info.json",
+    "show": true
+  }
+]

@@ -1,0 +1,107 @@
+#@bootstrap_html("通用设置", "")
+
+#define body()
+<div class="ibox-content">
+    <form id="settingForm">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">机构名称：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" value="#(entity.name??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">文字地址：</label>
+            <div class="col-sm-9">
+                <input type="text" name="address" class="form-control" value="#(entity.address??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">地图地址：</label>
+            <div class="col-sm-9">
+                <input type="text" name="mapAddress" class="form-control" value="#(entity.mapAddress??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">机构简介：</label>
+            <div class="col-sm-9">
+                <input type="text" name="description" class="form-control" value="#(entity.description??)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">官方邮箱：</label>
+            <div class="col-sm-9">
+                <input type="text" name="email" class="form-control" value="#(entity.email??)">
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="col-sm-3 control-label">官方公众号：</label>
+            <div class="col-sm-9">
+                <input type="text" name="officialAccount" class="form-control" value="#(entity.officialAccount??)">
+            </div>
+        </div>-->
+        #@my_img_upload2("公众号二维码", "officialAccountId", "officialAccount", "", entity.officialAccount??)
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">微信：</label>
+            <div class="col-sm-9">
+                <input type="text" name="weChat" class="form-control" value="#(entity.weChat??)">
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="col-sm-3 control-label">微信二维码：</label>
+            <div class="col-sm-9">
+                <input type="text" name="weChatImg" class="form-control" value="#(entity.weChatImg??)">
+            </div>
+        </div>-->
+        #@my_img_upload2("微信二维码", "weChatImgId", "weChatImg", "", entity.weChatImg??)
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">联系电话：</label>
+            <div class="col-sm-9">
+                <input type="text" name="phone" class="form-control" value="#(entity.phone??)">
+            </div>
+        </div>
+
+        #@my_img_upload2("组织图标", "iconId", "icon", "image/x-icon", entity.icon??)
+
+        #@my_img_upload2("组织logo", "logoId", "logo", "", entity.logo??)
+
+        #@my_img_upload2("首页展示图片", "indexShowImgId", "indexShowImg", "", entity.indexShowImg??)
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">视频介绍链接Url：</label>
+            <div class="col-sm-9">
+                <input type="text" name="introduceVideoUrl" class="form-control" value="#(entity.introduceVideoUrl??)">
+            </div>
+        </div>
+
+        #@my_img_upload2("首页视频封面", "videoCoverId", "videoCover", "", entity.videoCover??)
+
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" onclick="saveSetting()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function saveSetting() {
+        let formData = getFormDataToJsObject("#settingForm");
+        console.log(formData);
+        let result = WebDao.post("/api/v1/setting/organization/update", formData);
+        console.log(result);
+        if(result.success){
+            layer.msg("保存成功！");
+            // window.location.reload();
+            // refreshCurrentTab();
+        }else{
+            layer.msg("保存失败！")
+        }
+        // ProductController.me.add(Product.fromObject(formData));
+    }
+</script>
+#end

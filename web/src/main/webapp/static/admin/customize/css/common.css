@@ -1,0 +1,9 @@
+
+.bootstrap-table img{
+    max-height: 32px;
+}
+
+.control-label.is-required:before {
+    content: '* ';
+    color: red;
+}

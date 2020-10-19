@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/test/demo.js"></script>
+</head>
+<body>
+<script>
+    let pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 3,
+        totalRow: 13,
+        pageNumber: 1,
+    }
+    console.log(pagination);
+    let result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 9,
+        totalRow: 49,
+        pageNumber: 1,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 9,
+        totalRow: 49,
+        pageNumber: 5,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 19,
+        totalRow: 99,
+        pageNumber: 1,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 19,
+        totalRow: 99,
+        pageNumber: 10,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 10,
+        totalRow: 50,
+        pageNumber: 9,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+<script>
+    pagination = {
+        /*firstPage: true,
+        lastPage: false,
+        list: [],*/
+        pageSize: 5,
+        totalPage: 11,
+        totalRow: 54,
+        pageNumber: 10,
+    }
+    console.log(pagination);
+    result = renderPagination(pagination);
+    console.log(result);
+</script>
+</body>
+</html>

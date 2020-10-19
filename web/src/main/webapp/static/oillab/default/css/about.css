@@ -1,0 +1,50 @@
+ /*- - - - - - - - - - - - - - - - - - - - - - - - -  -*/
+#aboutContainer{
+    padding-bottom: 50px;
+}
+
+.about-title{
+    height: auto;
+    overflow: hidden;
+    margin: 40px auto 30px auto;
+}
+
+.about-title span {
+    display: block;
+    width: 160px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    color: #333;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.about-title em {
+    display: block;
+    width: 50%;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.about-title i {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background-color: #666;
+    margin: 8px auto 0 auto;
+}
+
+.about-content{
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto 0 auto;
+}

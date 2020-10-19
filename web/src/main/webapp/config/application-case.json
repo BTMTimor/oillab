@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "xxx项目",
+    "company": "合作公司",
+    "description": "简要描述……",
+    "url": "详细信息查看url",
+    "coverImg": "/static/oillab/images/c2.jpg",
+    "show": true
+  },
+  {
+    "id": 2,
+    "title": "xxx项目",
+    "company": "合作公司",
+    "description": "简要描述……",
+    "url": "详细信息查看url",
+    "coverImg": "/static/oillab/images/c2.jpg",
+    "show": true
+  },
+  {
+    "id": 3,
+    "title": "xxx项目",
+    "company": "合作公司",
+    "description": "简要描述……",
+    "url": "详细信息查看url",
+    "coverImg": "/static/oillab/images/c2.jpg",
+    "show": true
+  },
+  {
+    "id": 4,
+    "title": "xxx项目",
+    "company": "合作公司",
+    "description": "简要描述……",
+    "url": "详细信息查看url",
+    "coverImg": "/static/oillab/images/c2.jpg",
+    "show": false
+  }
+]

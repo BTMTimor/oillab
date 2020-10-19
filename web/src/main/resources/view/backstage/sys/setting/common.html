@@ -1,0 +1,32 @@
+#@bootstrap_html("通用设置", "")
+
+#define body()
+<div class="ibox-content">
+    <form id="settingForm">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">test：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" value="#(entity.name??)">
+            </div>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" onclick="saveSetting()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function saveSetting() {
+        let formData = getFormDataToJsObject("#settingForm");
+        console.log(formData);
+        let result = WebDao.post("/api/v1/setting/common/update", formData);
+        console.log(result);
+        // ProductController.me.add(Product.fromObject(formData));
+    }
+</script>
+#end

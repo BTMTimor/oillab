@@ -1,0 +1,23 @@
+<!--首页新闻-->
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<section class="index-news row">
+    {{each info item}}
+    <div class="col-lg-6 col-sm-12">
+        <a href="{{item.url}}" class="news-item">
+            <div class="time">
+                <span><em>{{item.pubTime | dateFormat  "d"}}</em><dl>日</dl></span>
+                <h2>{{item.pubTime | dateFormat "yyyy年m月"}}</h2>
+            </div>
+            <div class="info">
+                <h2>{{item.title}}</h2>
+                <p>{{item.description}}</p>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+    <div class="col-sm-12"><a href="/news" class="commonMoreBut">查看更多</a></div>
+</section>
+</body>
+</html>

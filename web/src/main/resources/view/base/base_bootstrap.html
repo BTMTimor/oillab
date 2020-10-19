@@ -1,0 +1,62 @@
+#define bootstrap_html(title, icon_url)
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    #@meta?()
+    <title>#(title)</title>
+    #if(icon_url)
+    <link rel="shortcut icon" href="#(icon_url)">
+    #end
+    <!--   css   -->
+    <!--    <link href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/static/admin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<!--    <link href="/static/plugins/bootstrap-table/1.7/bootstrap-table.min.css" rel="stylesheet">-->
+    <link href="/static/plugins/bootstrap-table/1.7/extensions/page-jump-to/bootstrap-table-page-jump-to.min.css" rel="stylesheet"/>
+    <link href="/static/admin/css/style.min.css" rel="stylesheet">
+    <link href="/static/admin/customize/css/common.css" rel="stylesheet">
+    #@css?()
+    <!--   js   -->
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+    <script src="/static/admin/js/bootstrap.min.js"></script>
+<!--    <script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+    <script src="/static/admin/js/content.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/js-xlsx/xlsx.core.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/es6-promise/es6-promise.auto.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/html2canvas/html2canvas.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="/static/plugins/tableExport.jquery.plugin/tableExport.min.js"></script>
+
+    <!--    <script src="/static/plugins/bootstrap-table/1.7/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js"></script>-->
+    <script src="/static/plugins/bootstrap-table/1.7/bootstrap-table.min.js"></script>
+    <script src="/static/plugins/bootstrap-table/1.7/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="/static/plugins/bootstrap-table/1.7/extensions/cookie/bootstrap-table-cookie.js"></script>
+    <!--    <script src="/static/admin/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>-->
+    <script src="/static/plugins/bootstrap-table/1.7/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js"></script>
+    <script src="/static/plugins/bootstrap-table/1.7/extensions/export/bootstrap-table-export.js"></script>
+    <script src="/static/plugins/bootstrap-table/1.7/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <script src="/static/admin/js/plugins/layer/layer.js"></script>
+    <!--模板引擎-->
+    <script src="/static/plugins/art-template/template-web.js"></script>
+    <!--自己拓展的-->
+    <script src="/static/common/js/common.js"></script>
+    <script src="/static/common/js/common.classes.js"></script>
+    <script src="/static/common/js/entity.class.js"></script>
+    <!--将日期格式化函数添加到template-->
+    <script>TemplateManager.addDateFormatToTemplate();</script>
+    #@hjs?()
+</head>
+<body>
+#@body?()
+<!--   js   -->
+#@js?()
+</body>
+</html>
+#end

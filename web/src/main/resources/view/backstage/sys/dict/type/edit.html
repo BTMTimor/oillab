@@ -1,0 +1,48 @@
+#@bootstrap_html("编辑字典类型", "")
+
+#define body()
+<div class="col-md-12">
+    <form id="dictTypeForm">
+        <input type="hidden" name="id" placeholder="id" value="#(entity.id)" />
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">类型名称：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" placeholder="请输入字典类型名称" value="#(entity.name)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">字典类型：</label>
+            <div class="col-sm-9">
+                <input type="text" name="type" class="form-control" placeholder="请输入字典类型名称" value="#(entity.type)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">备注：</label>
+            <div class="col-sm-9">
+                <input type="text" name="description" class="form-control" placeholder="请输入字典类型名称" value="#(entity.description)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">值状态：</label>
+            <div class="col-sm-9">
+                <select class="form-control" name="status" id="status">
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                </select>
+                <script>$("#status").val("#(entity.status)");</script>
+            </div>
+        </div>
+    </form>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <button id="submit" class="btn btn-primary block">保存</button>
+        </div>
+    </div>
+</div>
+<script>
+    $("#submit").on("click", function () {
+        SysDictTypeController.me.updateByForm("#dictTypeForm");
+    });
+</script>
+#end

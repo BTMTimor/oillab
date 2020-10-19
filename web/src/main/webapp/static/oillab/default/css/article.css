@@ -1,0 +1,102 @@
+
+#article-container{
+    margin: 0 auto;
+    max-width: 1080px !important;
+}
+
+#positionBar{
+    width: 100%;
+}
+
+/* 正文页 */
+.article-con {
+    padding: 10px 40px 20px;
+}
+
+.article-con .article{
+    width: 100%;
+}
+
+.article-con .article-info{
+    text-align: center;
+}
+
+.article-con h1 {
+    font-size: 32px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.article-con h2 {
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 300;
+    color: #666666;
+}
+
+.article-con .article-date {
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
+    line-height: 22px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ececec;
+}
+.article-con .article-date .glyphicon{
+    margin: 0 8px;
+}
+.article-con .article-text {
+    font-size: 16px;
+    line-height: 30px;
+    color: #333333;
+    padding: 10px;
+    border-bottom: 1px dashed #ececec;
+}
+
+.article-con .article-text p {
+    text-indent: 2em;
+    padding: 5px 0;
+}
+
+.article-con .article-text p img,
+.article-con .article-text p video {
+    margin-left: -2em;
+    max-width: 92%;
+}
+
+.article-con .updown ul {
+    padding: 10px;
+}
+
+.article-con .updown ul li {
+    font-size: 15px;
+    line-height: 34px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.article-con .updown ul li a:hover {
+    color: #d40000;
+}
+
+.article-con .updown ul li:hover {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+/* 正文表格P不缩进 */
+.article-con .article-text table tr td p,
+.article-con .article-text table tr th p {
+    text-indent: 0;
+    padding: 0;
+}

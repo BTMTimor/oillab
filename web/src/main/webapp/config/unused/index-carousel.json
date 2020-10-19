@@ -1,0 +1,31 @@
+{
+  "template": "/template/default/common/carousel.htm",
+  "prev": "Previous",
+  "next": "Next",
+  "images":[
+    {
+      "id": 1,
+      "title": "XXX产品",
+      "url": "/static/oillab/images/banner1.jpg",
+      "time": 3000
+    },
+    {
+      "id": 2,
+      "title": "XXX产品",
+      "url": "/static/oillab/images/banner2.jpg",
+      "time": 3000
+    },
+    {
+      "id": 3,
+      "title": "XXX产品",
+      "url": "/static/oillab/images/banner3.jpg",
+      "time": 3000
+    },
+    {
+      "id": 4,
+      "title": "XXX产品",
+      "url": "/static/oillab/images/banner4.jpg",
+      "time": 3000
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>art-template-test</title>
+    <script src="/static/dist/js/template-web.js"></script>
+</head>
+<body>
+    <div id="test01">
+        <p>username: {{user.name}}</p>
+        <p>phoneNumber: {{user.phone}}</p>
+        <p>address: {{user.address}}</p>
+    </div>
+    <hr>
+    <div id="test001">
+        <p>username: {{user.name}}</p>
+        <p>phoneNumber: {{user.phone}}</p>
+        <p>address: {{user.address}}</p>
+    </div>
+    <hr>
+    <div id="test02">
+        <p>username: {{user.name}}</p>
+        <p>phoneNumber: {{user.phone}}</p>
+        <p>address: {{user.address}}</p>
+    </div>
+    <hr>
+    <div id="test03">
+
+    </div>
+
+
+<script>
+    let userEntity = {
+        user:{
+            name: 'aui',
+            phone: "15507086958",
+            address:"江西理工大学红旗大道86号"
+        }
+    };
+    let userEntity2 = {
+        user:{
+            name: '张三',
+            phone: "16607086958",
+            address:"江西理工大学西区"
+        }
+    };
+    let htmlTemplate = "<div id=\"test02\">\n" +
+        "        <p>username: {{user.name}}</p>\n" +
+        "        <p>phoneNumber: {{user.phone}}</p>\n" +
+        "        <p>address: {{user.address}}</p>\n" +
+        "    </div>";
+
+
+    // 测试template方法
+    function test_template(){
+        // 基于模板名渲染模板，其中：test01为模板元素id
+        let html = template('test01', userEntity);
+        document.getElementById("test01").innerHTML = html;
+
+        let html2 = template('test01', userEntity2);
+        document.getElementById("test01").innerHTML = html2;
+    }
+
+    // 测试template方法，貌似不兼容web
+    function test_template2(){
+        // 编译并缓存
+        template('test001', "test0001");
+        // 基于模板名渲染模板，其中：test01为模板元素id
+        let html = template('test001', userEntity);
+        document.getElementById("test001").innerHTML = html;
+    }
+
+    // 测试compile template方法
+    function test_compile_template(){
+        // 将模板源代码编译成函数, 其中：htmlTemplate为模板
+        let temp = template.compile(htmlTemplate);
+        let html = temp(userEntity);
+        document.getElementById("test02").innerHTML = html;
+    }
+
+    // 测试render方法
+    function test_render(){
+        // 将模板源代码编译成函数并立刻执行
+        let html = template.render(htmlTemplate, userEntity);
+        document.getElementById("test03").innerHTML = html;
+    }
+
+    test_template();
+    test_template2();
+    test_compile_template();
+    test_render();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>#(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<link rel="shortcut icon" href="#(icon_url)">-->
+    <!--   css   -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/oillab/default/css/index.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/common.css">
+</head>
+<body>
+<div id="base-container">
+    <!--顶部导航栏：包含公司信息和导航信息-->
+    <header id="header" class="row"></header>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - - 页面主体内容 - - - - - - - - - - - - - - - - - - - - -->
+    <div class="main-container">
+        <div id="showContainer"></div>
+    </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--页面底部：导航、公司信息和版权信息-->
+    <footer id="footer"></footer>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--   js   -->
+<script src="/static/plugins/art-template/template-web.js"></script>
+<script src="/static/plugins/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script src="/static/common/js/common.classes.js"></script>
+<script src="/static/common/js/entity.class.js"></script>
+
+<script>
+    // 渲染网页顶部导航栏和网页底部信息
+    renderHeaderAndFooter("index");
+
+    // 加载关于板块的具体内容
+    function loadContent(data) {
+        for (let i in data) {
+            let temp = data[i];
+            if (temp["url"] === "") return;
+
+            // temp目录
+            let url = temp["url"];
+            // 是否需要加载配置文件进行渲染
+            let pageTemp = WebDao.get(url);
+
+            let renderResult = pageTemp;
+            let configName = temp["config"] ? temp["config"].trim() : "";
+            if (configName.length > 5){
+                let config;
+                // console.log("configName: " + configName);
+                if(configName.endsWith(".json")){
+                    config = ConfigDao.me.getByName(configName);
+                }else{
+                    let result = WebDao.getJSON(configName);
+                    config = result.main["list"] ? result.main["list"] : result.main;
+                }
+                renderResult = TemplateManager.render(url, pageTemp, {info: config});
+            }
+            $(".show-" + temp["name"]).html(renderResult);
+        }
+    }
+
+    // 初始化：加载页面所有内容
+    function initPage() {
+        new Promise(resolve => {
+            resolve(ModularController.me.indexModular().main);
+        }).then(data => {
+            // 加载具体信息
+            new Promise(() => {
+                TemplateManager.renderToElement("showContainer", {name: "index_showContainer", status:1}, data);
+                // 加载对应的内容
+                loadContent(data);
+            });
+        });
+    }
+    // Promise.race() 类似于Promise.all() ，区别在于它有任意一个完成就算完成
+
+    initPage();
+
+</script>
+
+<!--   js   -->
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

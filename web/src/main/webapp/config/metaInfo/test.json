@@ -1,0 +1,534 @@
+{
+  "modular": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": {
+        "add": false,
+        "delete": true,
+        "update": true,
+        "findById": true,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": true,
+        "batchDelete": true
+      },
+      "minLength": 1,
+      "maxLength": 32
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": {
+        "add": true,
+        "delete": false,
+        "update": true,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      },
+      "minLength": 1,
+      "maxLength": 64
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "required": {
+        "add": true,
+        "delete": false,
+        "update": true,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      },
+      "minLength": 1,
+      "maxLength": 64
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": {
+        "add": true,
+        "delete": false,
+        "update": true,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      },
+      "minLength": 1,
+      "maxLength": 64
+    },
+    {
+      "name": "englishTitle",
+      "type": "string",
+      "required": {
+        "add": false,
+        "delete": false,
+        "update": false,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      },
+      "minLength": 1,
+      "maxLength": 64
+    },
+    {
+      "name": "config",
+      "type": "string",
+      "required": {
+        "add": false,
+        "delete": false,
+        "update": false,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      },
+      "minLength": 0,
+      "maxLength": 128
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "required": {
+        "add": false,
+        "delete": false,
+        "update": false,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      }
+    },
+    {
+      "name": "sort",
+      "type": "int",
+      "required": {
+        "add": false,
+        "delete": false,
+        "update": false,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      }
+    }, {
+      "name": "status",
+      "type": "int",
+      "required": {
+        "add": true,
+        "delete": false,
+        "update": true,
+        "findById": false,
+        "find": false,
+        "findOne": false,
+        "list": false,
+        "batchAdd": false,
+        "batchUpdate": false,
+        "batchDelete": false
+      }
+    }
+  ],
+  "friend": {
+    "chain": []
+  },
+  "html": {
+    "template": [
+      {
+        "name": "id",
+        "type": "number",
+        "required": {"ajaxInsertType":false,"ajaxUpdateType":false,"findOneType":true,"findType":true,"insertType":false,"needForDelete":true,"needForGet":true,"updateType":false},
+        "rangeValue": "-1024, 1023"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 64"
+      },
+      {
+        "name": "type",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 32"
+      },
+      {
+        "name": "template",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":false,"findType":false,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 2048"
+      },
+      {
+        "name": "remark",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":false,"findType":false,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 256"
+      },
+      {
+        "name": "create_time",
+        "type": "datetime",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true}
+      },
+      {
+        "name": "edit_time",
+        "type": "datetime",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true}
+      },
+      {
+        "name": "status",
+        "type": "number",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeValue": "-1024, 1023"
+      }
+    ]
+  },
+  "sys": {
+    "dict": {
+      "dict": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": {
+            "add": false,
+            "delete": true,
+            "update": true,
+            "findById": true,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": true,
+            "batchDelete": true
+          },
+          "minLength": 1,
+          "maxLength": 32
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": {
+            "add": true,
+            "delete": false,
+            "update": true,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": {
+            "add": true,
+            "delete": false,
+            "update": true,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": {
+            "add": true,
+            "delete": false,
+            "update": true,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": {
+            "add": false,
+            "delete": false,
+            "update": false,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": {
+            "add": false,
+            "delete": false,
+            "update": false,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        },
+        {
+          "name": "fixed",
+          "type": "string",
+          "required": {
+            "add": true,
+            "delete": false,
+            "update": true,
+            "findById": false,
+            "find": false,
+            "findOne": false,
+            "list": false,
+            "batchAdd": false,
+            "batchUpdate": false,
+            "batchDelete": false
+          }
+        }
+      ],
+      "type": [{"name":"id","type":"string","required":{"add":false,"delete":true,"update":true,"findById":true,"find":false,"findOne":false,"list":false,"batchAdd":false,"batchUpdate":true,"batchDelete":true},"minLength":1,"maxLength":32},{"name":"name","type":"string","required":{"add":true,"delete":false,"update":true,"findById":false,"find":false,"findOne":false,"list":false,"batchAdd":false,"batchUpdate":false,"batchDelete":false},"minLength":1,"maxLength":32},{"name":"type","type":"string","required":{"add":true,"delete":false,"update":true,"findById":false,"find":false,"findOne":false,"list":false,"batchAdd":false,"batchUpdate":false,"batchDelete":false},"minLength":1,"maxLength":32},{"name":"description","type":"string","required":{"add":false,"delete":false,"update":false,"findById":false,"find":false,"findOne":false,"list":false,"batchAdd":false,"batchUpdate":false,"batchDelete":false},"minLength":1,"maxLength":32},{"name":"status","type":"number","required":{"add":true,"delete":false,"update":true,"findById":false,"find":false,"findOne":false,"list":false,"batchAdd":false,"batchUpdate":false,"batchDelete":false},"minLength":1,"maxLength":32}]
+    },
+    "config": []
+  },
+  "article": {
+    "type": [] ,
+    "article": [
+      {
+        "name": "id",
+        "type": "hidden",
+        "required": {"ajaxInsertType":false,"ajaxUpdateType":false,"findOneType":true,"findType":true,"insertType":false,"needForDelete":true,"needForGet":true,"updateType":false},
+        "rangeLength": "0, 32"
+      },
+      {
+        "name": "mid",
+        "type": "number",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeValue": "-1024, 1023"
+      },
+      {
+        "name": "uid",
+        "type": "hidden",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 32"
+      },
+      {
+        "name": "views",
+        "type": "number",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeValue": "-1024, 1023"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 128"
+      },
+      {
+        "name": "type",
+        "type": "select",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 32"
+      },
+      {
+        "name": "author",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 128"
+      },
+      {
+        "name": "description",
+        "type": "textarea",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":false,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 512"
+      },
+      {
+        "name": "coverImg",
+        "type": "image",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":false,"findType":false,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 255"
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":false,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeLength": "0, 65535"
+      },
+      {
+        "name": "addTime",
+        "type": "datetime",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true}
+      },
+      {
+        "name": "pubTime",
+        "type": "datetime",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true}
+      },
+      {
+        "name": "lastEditTime",
+        "type": "datetime",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true}
+      },
+      {
+        "name": "status",
+        "type": "select",
+        "required": {"ajaxInsertType":true,"ajaxUpdateType":true,"findOneType":true,"findType":true,"insertType":true,"needForDelete":false,"needForGet":false,"updateType":true},
+        "rangeValue": "-1024, 1023"
+      }
+    ]
+  },
+  "product": {
+    "product": [
+      {
+        "name": "id", "type": "string",
+        "required": "ID_RULE",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "name", "type": "string",
+        "required": "ADD_AND_UPDATE",
+        "minLength": 1,
+        "maxLength": 255
+      },
+      {
+        "name": "category", "type": "string",
+        "required": "ADD_AND_UPDATE",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "type", "type": "string",
+        "required": "ADD_AND_UPDATE",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "model", "type": "string",
+        "required": "ADD_AND_UPDATE",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      {
+        "name": "coverImg", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 0,
+        "maxLength": 255
+      },
+      {
+        "name": "description", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 0,
+        "maxLength": 255
+      },
+      {
+        "name": "introduction", "type": "string",
+        "required": "ADD_AND_UPDATE",
+        "minLength": 0
+      },
+      {
+        "name": "resource", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 0,
+        "maxLength": 1024
+      },
+      {
+        "name": "status", "type": "int",
+        "required": "ADD_AND_UPDATE"
+      }
+    ],
+    "category": [
+      {
+        "name": "id", "type": "string",
+        "required": "ID_RULE",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "name", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "description", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "status", "type": "int",
+        "required": "NOT_REQUIRED"
+      }
+    ],
+    "type": [
+      {
+        "name": "id", "type": "string",
+        "required": "ID_RULE",
+        "minLength": 1,
+        "maxLength": 32
+      },{
+        "name": "category", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "name", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "description", "type": "string",
+        "required": "NOT_REQUIRED",
+        "minLength": 1,
+        "maxLength": 32
+      },
+      {
+        "name": "status", "type": "int",
+        "required": "NOT_REQUIRED"
+      }
+    ]
+  }
+}

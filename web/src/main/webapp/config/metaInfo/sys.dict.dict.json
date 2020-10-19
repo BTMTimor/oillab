@@ -1,0 +1,39 @@
+[
+  {
+    "name": "id",
+    "type": "string",
+    "required": "ID_RULE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "name",
+    "type": "string",
+    "required": "ADD_AND_UPDATE"
+  },
+  {
+    "name": "type",
+    "type": "string",
+    "required": "ADD_AND_UPDATE"
+  },
+  {
+    "name": "value",
+    "type": "string",
+    "required": "ADD_AND_UPDATE"
+  },
+  {
+    "name": "sort",
+    "type": "string",
+    "required": "NOT_REQUIRED"
+  },
+  {
+    "name": "description",
+    "type": "string",
+    "required": "NOT_REQUIRED"
+  },
+  {
+    "name": "fixed",
+    "type": "string",
+    "required": "NOT_REQUIRED"
+  }
+]

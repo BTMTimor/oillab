@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "company-news",
+    "title": "公司新闻",
+    "show": true
+  },
+  {
+    "id": 2,
+    "name": "industry-news",
+    "title": "行业新闻",
+    "show": true
+  }
+]

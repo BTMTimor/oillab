@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Oillab</title>
+    <meta name="keywords" content="Oillab">
+    <meta name="description" content="Oillab">
+    <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/admin/css/login.min.css" rel="stylesheet">
+    <script>if(window.top !== window.self){window.top.location=window.location}</script>
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/static/plugins/layer/layer.min.js"></script>
+    <script>var ctx = "";</script>
+    <style>
+        #vCode, #imgCode{height: 34px}
+        #vCode-container{padding-top: 15px;}
+        #login{background-color: #1c84c6; border-color: #1c84c6;}
+        .vCode{color: #333; margin-top: 0 !important;}
+        .btn-success {
+            background-color: #1c84c6;
+            border-color: #1c84c6;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="signin-info">
+                <div class="logopanel m-b">
+                    <h1>[ H+ ]</h1>
+                </div>
+                <div class="m-b"></div>
+                <h4>欢迎使用 <strong>后台管理系统</strong></h4>
+                <ul class="m-b">
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> java</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Record</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Enjoy</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> JQuery</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> Bootstrap</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form id="loginForm">
+                <h4 class="no-margins">登录：</h4>
+                <p class="m-t-md">中央红军长征出发地历史博物馆</p>
+                <input type="text" id="username" class="form-control uname" placeholder="用户名" />
+                <input type="password" id="password" class="form-control pword m-b" placeholder="密码" />
+                <div id="vCode-container" class="row" >
+                    <div class="col-xs-6">
+                        <input id="vCode" type="text" class="vCode form-control" name="vCode" placeholder="验证码" maxlength="6">
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <a title="点击更换验证码" style="display: block">
+                            <img id="imgCode" src="/captcha/login" class="imgCode" width="85%" alt="验证码(5分钟内有效)">
+                        </a>
+                    </div>
+                </div>
+                <button class="btn btn-success btn-block" id="login">登录</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/common/js/login.js"></script>
+<script>
+    $("#login").on("click", () => {
+        login((message) => {
+            layer.msg("登录成功！", {time: 1500}, () => {
+                // 跳转到后台主页
+                window.location = "/admin/index";
+            });
+            return false;
+        })
+        return false;
+    });
+</script>
+</body>
+</html>

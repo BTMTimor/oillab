@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>#(entity.title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--   css   -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/oillab/default/css/common.css">
+    <link href="/static/oillab/default/css/article.css" rel="stylesheet">
+    <link href="/static/plugins/font-awesome/4.4.0/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="base-container">
+    <!--顶部导航栏：包含公司信息和导航信息-->
+    <header id="header" class="row"></header>
+    <!-- - - - - - - - - - - - - - - 页面主体内容 - - - - - - - - - - - - - - - - - - - - -->
+    <div class="main-container">
+        <!--文章内容主体 -->
+        <div id="container">
+            <div class="row">
+                <div id="article-container" class="article-con col-12"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--页面底部：导航、公司信息和版权信息-->
+    <footer id="footer"></footer>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--文章模板-->
+<script id="articleTemp" type="text/html">
+    <!--<div id="positionBar">
+        位置：<i class="fa fa-chevron-right"> 文章</i>
+    </div>-->
+    <div id="article">
+        <h1 class="article-title">{{article.title}}</h1>
+        <p class="article-info">
+            <span class="fa fa-calendar"> {{article.pubTime}}</span>&nbsp;&nbsp;
+            <span class="fa fa-user"> {{article.author}}</span>&nbsp;&nbsp;
+            <span class="fa fa-eye"> {{article.views}}次</span>
+        </p>
+        <div class="article-content">
+            {{@ article.content}}
+        </div>
+    </div>
+</script>
+
+<!--   js   -->
+<script src="/static/plugins/art-template/template-web.js"></script>
+<script src="/static/plugins/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/common/js/common.js"></script>
+<script src="/static/common/js/common.classes.js"></script>
+<script src="/static/common/js/entity.class.js"></script>
+
+<script>
+    // 渲染网页顶部导航栏和网页底部信息
+    renderHeaderAndFooter("");// news
+
+    let url = "/api/v1/article/get?id=#(entity.id)";
+    $.get(url, (result) => {
+        TemplateManager.renderByScriptId("articleTemp",
+            "article-container", {article: result.data.main});
+    });
+</script>
+
+<!--   js   -->
+<script src="/static/plugins/popper/1.16.0/popper.min.js"></script>
+<script src="/static/plugins/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

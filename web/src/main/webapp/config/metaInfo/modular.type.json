@@ -1,0 +1,34 @@
+[
+  {
+    "name": "id", "type": "string",
+    "label": "id",
+    "required": "ID_RULE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "name", "type": "string",
+    "label": "名称",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 32
+  },{
+    "name": "title", "type": "string",
+    "label": "标题",
+    "required": "ADD_AND_UPDATE",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "description", "type": "string",
+    "label": "描述",
+    "required": "NOT_REQUIRED",
+    "minLength": 1,
+    "maxLength": 32
+  },
+  {
+    "name": "status", "type": "int",
+    "label": "状态",
+    "required": "ADD_AND_UPDATE"
+  }
+]

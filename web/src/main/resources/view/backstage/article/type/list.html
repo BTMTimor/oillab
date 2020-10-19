@@ -1,0 +1,67 @@
+#setLocal(dataUrl = "/api/v1/article/type/find")
+
+#@bootstrap_html("文章类型管理", "")
+
+#define body()
+    <div class="ibox-content">
+        #@bootstrap_table("articleTypeTable", tableMeta, dataUrl, "operateFormatter")
+
+        #define tableToolbar()
+        <button type="button" class="btn btn-outline btn-default" onclick="add();">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true" title="添加"></i>
+        </button>
+        <button type="button" class="btn btn-outline btn-default" onclick="deleteAllSelected();">
+            <i class="glyphicon glyphicon-trash" aria-hidden="true" title="删除"></i>
+        </button><!--
+                <button type="button" class="btn btn-outline btn-default" onclick="">
+                    <i class="glyphicon glyphicon-edit" aria-hidden="true" title="编辑"></i>
+                </button>-->
+        <button type="button" class="btn btn-outline btn-default" onclick="search();">
+            <i class="glyphicon glyphicon-search" aria-hidden="true" title="查找"></i>
+        </button>
+        #end
+    </div>
+#end
+
+#define js()
+<script>
+
+    function operateFormatter(value, row, index){
+        return BsTableFormat.operate(row);
+    }
+
+    function add() {
+        layer.open({
+            type: 2,
+            title: "添加文章类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            resize: true,
+            content: ['/article/type/add', 'no']
+        });
+    }
+
+    function edit(id) {
+        layer.open({
+            type: 2,
+            title: "编辑文章类型",
+            area: ['500px', '400px'],
+            maxmin: true,
+            content: ['/article/type/update?id=' + id, 'no']
+        });
+        return false;
+    }
+
+    function deleteById(id) {
+        commonDelete(()=> ArticleTypeController.me.deleteById(id));
+    }
+
+    // 删除所有选中的数据
+    function deleteAllSelected() {
+        commonDeleteAll("#articleTypeTable",
+            (rows)=> ArticleTypeController.me.batchDelete(rows));
+    }
+
+    function search(){}
+</script>
+#end

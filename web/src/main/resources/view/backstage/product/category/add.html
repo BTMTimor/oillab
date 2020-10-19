@@ -1,0 +1,41 @@
+#@bootstrap_html("添加产品种类", "")
+
+#define body()
+<div class="col-md-12">
+    <form id="productCategoryForm" role="form">
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">产品种类名称：</label>
+            <div class="col-sm-9">
+                <input type="text" name="name" class="form-control" placeholder="请输入产品种类名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">产品种类描述：</label>
+            <div class="col-sm-9">
+                <input type="text" name="description" class="form-control" placeholder="请输入产品种类描述">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label is-required">状态：</label>
+            <div class="col-sm-9">
+                <select id="statusId" name="status" class="form-control"></select>
+                <script>renderSelect("statusId", "1221", '#(entity.status??1)');</script>
+            </div>
+        </div>
+    </form>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <button class="btn btn-success" onclick="add()">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function add() {
+        ProductCategoryController.me.addByForm("#productCategoryForm");
+    }
+</script>
+#end

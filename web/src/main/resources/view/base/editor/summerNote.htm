@@ -1,0 +1,30 @@
+#--
+    summerNote富文本组件
+    依赖：bootsrtap、jquery
+    TODO 图片在编辑器中移动时会出现一些问题
+--#
+#define editor_summerNote(id, name, content, uploadUrl)
+####set(uploadUrl = "/ueditor/upFile")
+<html>
+<head><meta charset="UTF-8"></head>
+<link href="/static/plugins/summernote/summernote.css" rel="stylesheet">
+<style>.btn-default{color: #333; background-color: #fff; border-color: #ccc;}</style>
+<body>
+<div class="summerNote">
+    <textarea id="#(id)" name="#(name)">#(content)</textarea>
+</div>
+<!--js-->
+<script src="/static/plugins/summernote/summernote.min.js"></script>
+<script src="/static/plugins/summernote/lang/summernote-zh-CN.js"></script>
+<script src="/static/common/js/summerNote-demo.js"></script>
+<script>
+    $(document).ready(function(){
+        let summerNoteId = "##(id)";
+        let uploadUrl = "#(uploadUrl)";
+        // summerNote初始化
+        initSummerNote(summerNoteId, uploadUrl);
+    });
+</script>
+</body>
+</html>
+#end

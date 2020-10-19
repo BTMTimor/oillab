@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+group 'xyz.xpman'
+version '1.0'
+
+dependencies {
+
+    compile project(':common')
+}
